@@ -33,7 +33,21 @@ string check_menu(const string& menuText , vector<string>choices){
 // Problem 2 :
 
 // Problem 3 :
+vector<string> spilt(const string& target ,const string &delimiter){
+    vector<string> result;
+    string temp;
 
+    for(char i : target){
+        temp.push_back(i);
+        if(i == delimiter[0]){
+            temp.pop_back();
+            result.push_back(temp);
+            temp = "";
+        }
+    }
+
+    return result;
+}
 // Problem 4 :
 
 // Problem 5 :

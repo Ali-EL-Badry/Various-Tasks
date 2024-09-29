@@ -20,11 +20,10 @@ string check_menu(const string& menuText , vector<string>choices){
     while(true){
         cout << menuText ;
         getline(cin, correct);
-        if(correct.size() != 1 && find(choices.begin(),choices.end(), correct) != choices.end())
+        if(correct.size() != 1 || find(choices.begin(),choices.end(), correct) == choices.end())
             cout << "Please Enter a valid option\n" ;
         else
             break;
-        cin.ignore();
     }
     return correct;
 }
@@ -57,5 +56,6 @@ string check_menu(const string& menuText , vector<string>choices){
 
 
 int main(){
+    
     return 0;
 }

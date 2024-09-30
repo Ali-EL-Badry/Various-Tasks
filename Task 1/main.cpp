@@ -99,6 +99,13 @@ p.score=stoi(scores);
     }
     v.push_back(p);
  sort(v.begin(),v.end(),way);// it should be static function
+
+ //erase the rest
+    if(v.size()>10){
+        for (int i = 10; i <v.size(); ++i)
+           v.erase(i+v.begin());
+
+    }
 }
 void player :: getter( const vector<player> & v){
     xx:
@@ -205,6 +212,6 @@ void players(){
 
 
 int main(){
-   
+
     return 0;
 }

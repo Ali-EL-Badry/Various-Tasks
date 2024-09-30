@@ -244,6 +244,39 @@ void problem_5 (){
 // Problem 8 :
 
 // Problem 9 :
+bool gameJudge(ll n){
+    if (n == 42)
+        return true;
+    if (n < 42)
+        return false;
+
+    if (n % 2 == 0 && gameJudge(n / 2))
+        return true;
+
+    if (n % 3 == 0 || n % 4 == 0){
+        ll last_digit = n % 10, second_digit = (n % 100) / 10;
+        ll product = last_digit * second_digit;
+
+        if (product > 0 && gameJudge(n - product))
+            return true;
+    }
+
+    if (n % 5 == 0 && gameJudge(n - 42))
+        return true;
+    return false;
+}
+
+void problem_9(){
+    string numberBears;
+    while (true){
+        cout << "Enter the number of bears : ";
+        getline(cin,numberBears);
+        if(isnumeric(numberBears))
+            break;
+        cout << "Please Enter a valid option" << endl;
+    }
+    cout << (gameJudge(stoll(numberBears)) ?  "You win" : "You Lose") << endl;
+}
 
 // Problem 10:
 

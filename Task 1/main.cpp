@@ -150,8 +150,35 @@ vector<string> spilt(const string& target ,const string &delimiter){
             temp = "";
         }
     }
+    result.push_back(temp);
 
     return result;
+}
+void problem_3(){
+    string target, delimiter;
+
+    cout << "Enter The sentence You want to split: ";
+    getline(cin,target);
+
+    string delimiterMenu = "Do you want Delimiter to be as Default ' ' or something else? \n1) Default\n2) Enter your Own\nYour choice : ";
+    vector<string> delimiterChoices = {"1","2"};
+    string menuAnswer = check_menu(delimiterMenu, delimiterChoices);
+
+    if(menuAnswer == "1")
+        delimiter = " ";
+    else{
+        cout << "Enter your Delimter : ";
+        cin >> delimiter;
+    }
+
+    vector<string> result;
+    result = spilt(target, delimiter);
+
+    cout << "Your vector = [ ";
+    for(ll i = 0 ; i< result.size()-1 ; i++)
+        cout << "\"" << result[i] << "\", ";
+    cout << "\"" << result.back() << "\" ";
+    cout << "]\n";
 }
 // Problem 4 :
 

@@ -233,9 +233,51 @@ void problem_5 (){
 
     }
 }
+// problem 6
+void toBinary(ll n) {
+    if (n > 1)
+        toBinary(n / 2);
+    cout << (n % 2);
+}
+void numbers(const string& prefix, int k) {
+    if (k == 0)
+        cout << prefix;
+    else {
+        numbers(prefix + "0", k - 1);
+        cout << ' ';
+        numbers(prefix + "1", k - 1);
+    }
+}
+void problem_6(){
+    string problemMenu= "Which one do you to choose?\n1) Binary print\n2) Printing Many Numbers \nYour choice :";
+    vector<string> problemChoice = {"1", "2"};
+    string choice = check_menu(problemMenu,problemChoice);
 
-// Problem 6 :
+    if(choice == "1"){
+        string target = "a";
+        while (!isnumeric(target)){
+            cout << "Enter the number you want to change:";
+            getline(cin, target);
+        }
+        cout << "Your binary number = ";
+        toBinary(stoll(target));
+    }
+    else{
+        string prefix = "a", suffix="a";
+        while (!isnumeric(prefix)){
+            cout << "Enter the Prefix:";
+            getline(cin, prefix);
+        }
+        while (!isnumeric(suffix)){
+            cout << "Enter the number of suffix:";
+            getline(cin, suffix);
+        }
+        cout << "All the propabilities is : [";
+        numbers(prefix,stoll(suffix));
+        cout << "] \n ";
+    }
 
+}
 // Problem 7 :
 
 // Problem 8 :

@@ -23,6 +23,7 @@ string check_menu(const string& menuText , vector<string>choices){
 
     while(true){
         cout << menuText ;
+        if (cin.peek() == '\n') cin.ignore();
         getline(cin, correct);
         if(correct.size() != 1 || find(choices.begin(),choices.end(), correct) == choices.end())
             cout << "Please Enter a valid option\n" ;
@@ -138,15 +139,17 @@ void player :: add (vector <player> & v){
     string s,ss,scores;
     x:
 
-    cin.ignore();
+    if (cin.peek() == '\n') cin.ignore();
 
     cout<<"Enter the name : ";getline(cin,p.name); s=p.name;
     s= Lower(s);
 
 
     cout<<"Enter the score : ";cin>>scores;
-    while (!isnumeric(scores))
-        cout<<"Please Enter a valid number : ";cin>>scores;
+    while (!isnumeric(scores)) {
+        cout << "Please Enter a valid number : ";
+        cin >> scores;
+    }
 
 
     p.score=stoi(scores);
@@ -172,7 +175,7 @@ void player :: add (vector <player> & v){
 void player :: getter( const vector<player> & v){
     xx:
 
-    string n;   cin.ignore();
+    string n;    if (cin.peek() == '\n') cin.ignore();
     cout<<"Enter the name : ";  getline(cin,n);
     n=Lower(n);
     int size;
@@ -207,7 +210,7 @@ void problem_5 (){
     while(true){
         //Menu and Validations
 
-        string menu = "Choose from the following menu :\n\n1.Add Player\n2.Print the top 10 players\n3.Getting the highest score of certain player\n4.Exit that program \\n\"<< \"\\nEnter Your Choice : ";
+        string menu = "Choose from the following menu :\n\n1.Add Player\n2.Print the top 10 players\n3.Getting the highest score of certain player\n4.Exit that program \nEnter Your Choice : ";
         vector<string>v={"1","2","3","4"};
         string choice = check_menu(menu,v);
 
@@ -233,51 +236,9 @@ void problem_5 (){
 
     }
 }
-// problem 6
-void toBinary(ll n) {
-    if (n > 1)
-        toBinary(n / 2);
-    cout << (n % 2);
-}
-void numbers(const string& prefix, int k) {
-    if (k == 0)
-        cout << prefix;
-    else {
-        numbers(prefix + "0", k - 1);
-        cout << ' ';
-        numbers(prefix + "1", k - 1);
-    }
-}
-void problem_6(){
-    string problemMenu= "Which one do you to choose?\n1) Binary print\n2) Printing Many Numbers \nYour choice :";
-    vector<string> problemChoice = {"1", "2"};
-    string choice = check_menu(problemMenu,problemChoice);
 
-    if(choice == "1"){
-        string target = "a";
-        while (!isnumeric(target)){
-            cout << "Enter the number you want to change:";
-            getline(cin, target);
-        }
-        cout << "Your binary number = ";
-        toBinary(stoll(target));
-    }
-    else{
-        string prefix = "a", suffix="a";
-        while (!isnumeric(prefix)){
-            cout << "Enter the Prefix:";
-            getline(cin, prefix);
-        }
-        while (!isnumeric(suffix)){
-            cout << "Enter the number of suffix:";
-            getline(cin, suffix);
-        }
-        cout << "All the propabilities is : [";
-        numbers(prefix,stoll(suffix));
-        cout << "] \n ";
-    }
+// Problem 6 :
 
-}
 // Problem 7 :
 
 // Problem 8 :

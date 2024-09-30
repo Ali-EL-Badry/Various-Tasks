@@ -11,7 +11,7 @@
 
 // Defining only
 #include <bits/stdc++.h>
-#include <algorithm>
+
 #define ll long long
 using namespace std;
 
@@ -62,8 +62,11 @@ bool isnumeric(const string& s){
 
 // Problem 2 :
 bool check(const vector<pair<string,string>> & strings ,const vector<string> & v, long long index ){
+
     if(index+4<v.size()){
+
         string s= Lower(v[index+2]);
+
      if(s!="or"){
          return true;
      }else{
@@ -75,10 +78,14 @@ bool check(const vector<pair<string,string>> & strings ,const vector<string> & v
          }
          return true;
      }
+
+
     }else
         return true;
 }
 void problem_2(){
+
+
     vector<pair<string,string>>strings={{"her", "him"}, {"he", "she"}, {"his", "hers"}, {"mrs", "mr"}, {"sir", "miss"},
                                          {"actor", "actress"},{"father","mother"},{"boy","girl"} };
 
@@ -227,6 +234,7 @@ bool player :: way(player p1, player p2){
 }
 
 void player :: add (vector <player> & v){
+
     player p;
     string s,ss,scores;
     x:
@@ -262,6 +270,7 @@ void player :: add (vector <player> & v){
         for (int i = 10; i <v.size(); ++i)
             v.erase(i+v.begin());
     }
+
 }
 
 void player :: getter( const vector<player> & v){
@@ -327,6 +336,7 @@ void problem_5 (){
         }
 
     }
+
 }
 
 // Problem 6 :
@@ -339,22 +349,30 @@ void problem_5 (){
 bool gameJudge(ll n){
     if (n == 42)
         return true;
+
     if (n < 42)
         return false;
+
     if (n % 2 == 0 && gameJudge(n / 2))
         return true;
+
     if (n % 3 == 0 || n % 4 == 0){
         ll last_digit = n % 10, second_digit = (n % 100) / 10;
         ll product = last_digit * second_digit;
         if (product > 0 && gameJudge(n - product))
             return true;
     }
+
     if (n % 5 == 0 && gameJudge(n - 42))
         return true;
+
     return false;
 }
+
 void problem_9(){
+
     string numberBears;
+
     while (true){
         cout << "Enter the number of bears : ";
         getline(cin,numberBears);
@@ -362,8 +380,11 @@ void problem_9(){
             break;
         cout << "Please Enter a valid option" << endl;
     }
+
     cout << (gameJudge(stoll(numberBears)) ?  "You win" : "You Lose") << endl;
+
 }
+
 // Problem 10:
 
 // Problem 11:

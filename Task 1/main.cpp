@@ -489,6 +489,43 @@ void problem_11(){
 }
 
 // Problem 12:
+void problem_12(){
+    map<string, int> phishingWords = {
+        {"temporary", 3}, {"suspension", 2}, {"urgent", 3},{"click", 3},
+        {"verify", 3}, {"password", 3}, {"account", 1},{"login", 2},
+        {"limited", 2}, {"important", 3},{"bank", 3}, {"security", 3},
+        {"alert", 3}, {"update", 2},{"congratulations", 2}, {"free", 2},
+        {"won", 3}, {"gift", 2},{"fraud", 3}, {"secure", 3}, {"action", 3},
+        {"sensitive", 3},{"information", 3}, {"immediately", 3},{"offer", 2},
+        {"contact", 1}, {"unsubscribe", 1}, {"invoice", 2}, {"response", 3},
+        {"payment", 3}, {"access", 3}, {"locked", 3}, {"service", 2},
+    };
+
+    ifstream email(R"(C:\Users\HP\OneDrive\Desktop\My_code\C212 Assignment\Task_1\email.txt)");
+    ofstream outputFile(R"(C:\Users\HP\OneDrive\Desktop\My_code\C212 Assignment\Task_1\output.txt)");
+    if(!email.is_open() || !outputFile.is_open()){
+        cerr << "Cant open the file\n";
+        return;
+    }
+    ll totalValuePoints = 0;
+
+    string temp;
+    map <string,int> numberRepetation;
+    while(email >> temp)
+        numberRepetation[temp]++;
+
+    for(auto i : numberRepetation){
+        if(phishingWords[i.first] != 0){
+            int totalPointWord = i.second * phishingWords[i.first];
+            outputFile <<  "Phishing term: \"" << i.first << "\", Occurrences: " << i.second << ", Points: " << totalPointWord << endl;
+            totalValuePoints += totalPointWord;
+        }
+    }
+    outputFile << "Total points = " << totalValuePoints << '\n';
+
+    email.close();
+    outputFile.close();
+}
 
 // Menu :
 

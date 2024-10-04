@@ -52,111 +52,6 @@ bool isnumeric(const string& s){
     return s;
 }
 
-
-//================================================================
-
-
-// Problem 1 :
-
-// Problem 2 :
-bool check(const vector<pair<string,string>> & strings ,const vector<string> & v, long long index ){
-
-    if(index+4<v.size()){
-
-        string s= Lower(v[index+2]);
-
-     if(s!="or"){
-         return true;
-     }else{
-         s= Lower(v[index+4]);
-         for (const auto & string : strings) {
-             if(s==string.first||s==string.second)
-                 return false;
-         }
-         return true;
-     }
-
-
-    }else
-        return true;
-}
-void problem_2(){
-
-
-    vector<pair<string,string>>strings={{"her", "him"}, {"he", "she"}, {"his", "hers"}, {"mrs", "mr"}, {"sir", "miss"},
-                                         {"actor", "actress"},{"father","mother"},{"boy","girl"} };
-
-    string sentence2,sentence; cout<<"Enter your sentence : ";
-    while(getline(cin,sentence2)) {
-       /* if(sentence2=="exit")
-            break;*///clion problem
-        if(!sentence2.empty()){ sentence += sentence2; }
-        sentence+='\n';
-    }
-    sentence.pop_back();
-
-
-    string answer,part;
-    vector<string>v;
-    for (int i = 0; i < sentence.size(); ++i) {
-        if (ispunct(sentence[i])||sentence[i]=='\n'||sentence[i]==' '){
-            if(!part.empty()){
-                v.push_back(part); part.clear();
-            }
-            part+=sentence[i]; v.push_back(part);
-            part.clear();
-        }else{
-
-            part+=sentence[i];
-        }
-    }
-    if(!part.empty()){
-        v.push_back(part);
-    }
-
-
-    for (int i = 0; i < v.size(); ++i) {
-        string ss;
-        ss=v[i]; ss= Lower(ss);
-        bool checks= true;
-        for (int j = 0; j < strings.size(); ++j) {
-
-            if(ss==strings[j].first){
-                if(check(strings,v,i)) {
-                    v[i] += " or ";
-                    v[i] += strings[j].second;
-                }else{
-                    for (int k = i; k <=4 ; ++k) {
-                        answer+=v[k];
-                    }
-                    i+=4;
-                    checks=false;
-                }
-
-                break;
-            }else if(ss==strings[j].second){
-                if(check(strings,v,i)){
-                    v[i] += " or ";
-                    v[i] += strings[j].first;
-                }else{
-                    for (int k = i; k <=i+4 ; ++k) {
-                        answer+=v[k];
-                    }
-                    i+=4;
-                    checks=false;
-                }
-
-                break;
-            }
-
-        }
-        if(checks){ answer += v[i]; }
-    }
-    cout<<"\n\n #### Here is your Conversion ####  \n\n"<<answer;
-
-}
-
-
 // Problem 3 :
 
 vector<string> spilt(const string& target ,const string &delimiter){
@@ -202,146 +97,7 @@ void problem_3(){
     cout << "]\n";
 }
 
-// Problem 4 :
-
-// Problem 5 :
-
-struct player{
-private:
-    string name;
-    double score;
-
-public:
-    void print (const vector <player> & v);
-    void add (vector <player> & v);
-    static bool way(player p1, player p2);
-    void getter( const vector<player> & v);
-};
-
-void player::print (const vector <player> & v){
-    // limitation of 10
-    int size = (v.size() > 10 ? 10 : v.size());
-
-    for (int i = 0; i < size; i++)
-        cout << i + 1 << "." << "Name : \'" << v[i].name << "\'        " << "Score : " << v[i].score << '\n';
-}
-
-bool player :: way(player p1, player p2){
-    return (p1.score>=p2.score);
-}
-
-void player :: add (vector <player> & v){
-
-    player p;
-    string s,ss,scores;
-    x:
-
-    if (cin.peek() == '\n') cin.ignore();
-
-    cout<<"Enter the name : ";getline(cin,p.name); s=p.name;
-    s= Lower(s);
-
-
-    cout<<"Enter the score : ";cin>>scores;
-    while (!isnumeric(scores)) {
-        cout << "Please Enter a valid number : ";
-        cin >> scores;
-    }
-
-
-    p.score=stoi(scores);
-    for (int i = 0; i < v.size(); ++i) {
-        ss=v[i].name;
-        ss= Lower(ss);
-
-        if(s==ss&& p.score==v[i].score) {
-            cout<<"This player with that name and that score is already entered !!\nTry again!\n\n";
-            goto x;
-        }
-    }
-    v.push_back(p);
-    sort(v.begin(),v.end(),way);
-
-    //erase the rest
-    if(v.size()>10){
-        for (int i = 10; i <v.size(); ++i)
-            v.erase(i+v.begin());
-    }
-
-}
-
-void player :: getter( const vector<player> & v){
-    xx:
-
-    string n;    if (cin.peek() == '\n') cin.ignore();
-    cout<<"Enter the name : ";  getline(cin,n);
-    n=Lower(n);
-    int size;
-
-    // limitation of 10
-    if(v.size()>10)
-        size=10;
-    else
-        size=v.size();
-
-    for (int i = 0; i < size ; ++i) {
-
-        string s =v[i].name;
-        s= Lower(s);
-
-        if(n==s) {
-            cout << "The score is : " << v[i].score << '\n';
-            return;
-        }
-
-    }
-
-    cout<<"\n\nThis player is not from the top 10 \n\n Try again!\n\n";
-
-    goto xx;
-}
-
-void problem_5 (){
-
-    vector<player>Player;
-    //Small Menu
-    while(true){
-        //Menu and Validations
-
-        string menu = "Choose from the following menu :\n\n1.Add Player\n2.Print the top 10 players\n3.Getting the highest score of certain player\n4.Exit that program \nEnter Your Choice : ";
-        vector<string>v={"1","2","3","4"};
-        string choice = check_menu(menu,v);
-
-        if(choice=="1"){//Add
-
-            Player[0].add(Player);
-
-        }else if( choice =="2"){//Printing
-
-           if(!Player.empty())
-               Player[0].print(Player);
-           else
-               cout<<"\n\nThere is no player is added \n\n";
-
-        }else if (choice =="3"){//Getting score of a player
-
-            Player[0].getter(Player);
-
-        }else {//exit
-         cout<<"\n\n\n ######### Thanks for using that program #########\n\n\n";
-         break;
-        }
-
-    }
-
-}
-
 // Problem 6 :
-
-// Problem 7 :
-
-// Problem 8 :
-
 // Problem 9 :
 
 bool gameJudge(ll n){
@@ -382,10 +138,6 @@ void problem_9(){
     cout << (gameJudge(stoll(numberBears)) ?  "You win" : "You Lose") << endl;
 
 }
-
-// Problem 10:
-
-// Problem 11:
 
 // Problem 12:
 void problem_12(){
@@ -430,6 +182,5 @@ void problem_12(){
 
 
 int main(){
-    problem_12();
     return 0;
 }

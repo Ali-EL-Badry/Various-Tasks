@@ -512,7 +512,7 @@ void problem_12(){
     string temp;
     map <string,int> numberRepetation;
     while(email >> temp)
-        numberRepetation[temp]++;
+        numberRepetation[Lower(temp)]++;
 
     for(auto i : numberRepetation){
         if(phishingWords[i.first] != 0){

@@ -1,0 +1,3 @@
+C:/Users/HP/OneDrive/Desktop/My_code/C212 Assignment/Task_1/cmake-build-debug/CMakeFiles/Task_1.dir
+C:/Users/HP/OneDrive/Desktop/My_code/C212 Assignment/Task_1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/HP/OneDrive/Desktop/My_code/C212 Assignment/Task_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

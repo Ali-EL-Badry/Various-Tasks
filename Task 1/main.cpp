@@ -11,7 +11,7 @@
 
 // Defining only
 #include <bits/stdc++.h>
-
+#include <fstream>
 #define ll long long
 using namespace std;
 
@@ -31,7 +31,7 @@ string check_menu(const string& menuText , vector<string>choices){
         else
             break;
     }
-    
+
     return correct;
 }
 
@@ -42,16 +42,39 @@ bool isnumeric(const string& s){
         if(!isdigit(c))
             return false;
     }
-    
+
     return  true;
 }
 
 
 //Lower strings
- string Lower(string s){
+string Lower(string s){
     for(auto& ch : s)
         ch=tolower(ch);
     return s;
+}
+
+
+//Validation of existence of the files
+string validation(string name){
+    ifstream files(name);
+    while (true){
+        try {
+            if (files.is_open())
+                break;
+            else {
+                throw runtime_error("please enter again \n");
+            }
+
+        }catch(exception & e){//exception is parent to the runtime error //"class"
+            cout<<"Please try again !!\n\n Enter a Valid File : ";
+            if(cin.peek()=='\n')cin.ignore();
+            getline(cin,name);
+        }
+
+    }
+    return name;
+
 }
 
 
@@ -67,17 +90,17 @@ bool check(const vector<pair<string,string>> & strings ,const vector<string> & v
 
         string s= Lower(v[index+2]);
 
-     if(s!="or"){
-         return true;
-     }else{
-         s= Lower(v[index+4]);
-         for (int i = 0; i < strings.size(); ++i) {
+        if(s!="or"){
+            return true;
+        }else{
+            s= Lower(v[index+4]);
+            for (int i = 0; i < strings.size(); ++i) {
 
-             if(s==strings[i].first||s==strings[i].second)
-                 return false;
-         }
-         return true;
-     }
+                if(s==strings[i].first||s==strings[i].second)
+                    return false;
+            }
+            return true;
+        }
 
 
     }else
@@ -87,16 +110,20 @@ void problem_2(){
 
 
     vector<pair<string,string>>strings={{"her", "him"}, {"he", "she"}, {"his", "hers"}, {"mrs", "mr"}, {"sir", "miss"},
-                                         {"actor", "actress"},{"father","mother"},{"boy","girl"} };
+                                        {"herself","himself"}};
+    ll num=0;
+    string sentence; cout<<"Enter your sentence : ";
+    char c;
+    while(num<100) {
 
-    string sentence2,sentence; cout<<"Enter your sentence : ";
-    while(getline(cin,sentence2)) {
-       /* if(sentence2=="exit")
-            break;*///clion problem
-        if(!sentence2.empty()){ sentence += sentence2; }
-        sentence+='\n';
+       /* if(!sentence2.empty()){ sentence += sentence2; }
+        sentence+='\n';*/
+        cin.get(c);
+       sentence+=c;
+       if(c=='.') { break; }
+       num++;
     }
-    sentence.pop_back();
+
 
 
     string answer,part;
@@ -321,18 +348,18 @@ void problem_5 (){
 
         }else if( choice =="2"){//Printing
 
-           if(!Player.empty())
-               Player[0].print(Player);
-           else
-               cout<<"\n\nThere is no player is added \n\n";
+            if(!Player.empty())
+                Player[0].print(Player);
+            else
+                cout<<"\n\nThere is no player is added \n\n";
 
         }else if (choice =="3"){//Getting score of a player
 
             Player[0].getter(Player);
 
         }else {//exit
-         cout<<"\n\n\n ######### Thanks for using that program #########\n\n\n";
-         break;
+            cout<<"\n\n\n ######### Thanks for using that program #########\n\n\n";
+            break;
         }
 
     }
@@ -388,6 +415,78 @@ void problem_9(){
 // Problem 10:
 
 // Problem 11:
+void problem_11(){
+
+    cout<<"######### Welcome to the Facility Comparing Files #########\n\n";
+    cout<<"Which type of compare do you want ? \n\nChoose from the following :\n1.Character by Character\n2.Word by Word \n\n ";
+    cout<<"Enter your choice : ";
+
+    string choice;cin>>choice;
+    while(choice!="2"&&choice!="1"){
+        cout<<"Please Enter a Valid Choice : ";
+        cin>>choice;
+    }
+    //Enter the files
+    cout<<"Please Enter the file names !\n\n"
+
+        <<"Enter the first file name : ";
+    string name1,name2; if (cin.peek() == '\n') cin.ignore();
+    getline(cin,name1);
+    name1= validation(name1);
+
+
+    cout<<"Enter the second file name : ";
+    if (cin.peek() == '\n') cin.ignore();
+    getline(cin,name2);
+    name2= validation(name2);
+
+    ifstream files1 (name1);
+    ifstream  files2 (name2);
+
+    if(choice=="1"){
+        char c1=files1.get() ,c2=files2.get();
+        bool equal = true;
+
+            ll number=1;
+            while(!files1.eof()&&!files2.eof()){
+
+                if(c1!=c2){
+                    equal=false;
+                    break;
+                }
+                if(c1==c2 =='\n'){
+                    number++;
+                }
+                c1=files1.get(); c2=files2.get();
+            }
+
+
+            if(c1==EOF && c2==EOF)
+                cout<<"The two files are identical \n";
+            else if( c1==EOF && c2!=EOF) {
+                cout << "The two files are not identical \n";
+                cout<<"The first file is smaller than the second file \n";
+            }else if( c1!=EOF && c2==EOF ){
+                cout << "The two files are not identical \n";
+                cout<<"The second file is smaller than the first file \n";
+            }else{
+                cout << "The two files are not identical \n";
+                cout<<"The difference in line number "<<number<<" is :   "<<"First file contains--> "<<c1
+                    <<"and the second file contains --> "<<c2<<"\n\n";
+            }
+
+
+
+    }else{
+
+
+
+
+    }
+
+
+
+}
 
 // Problem 12:
 
@@ -395,6 +494,6 @@ void problem_9(){
 
 
 int main(){
-
+   
     return 0;
 }

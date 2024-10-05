@@ -40,23 +40,23 @@ using namespace std;
  * @return return the last correct choice for user
  */
 string check_menu(const string& menuText , vector<string>choices){
-    string correct;
+    string currentAnswer;
 
     while(true){
         cout << menuText ;
-        getline(cin, correct);
-        if(correct.size() != 1 || find(choices.begin(),choices.end(), correct) == choices.end())
+        getline(cin, currentAnswer);
+        if(currentAnswer.size() != 1 || find(choices.begin(),choices.end(), currentAnswer) == choices.end())
             cerr << "Please Enter a valid option\n" ;
         else
             break;
     }
     cin.ignore(0, '\n');
 
-    return correct;
+    return currentAnswer;
 }
 
 /* @brief To check if the entire string is numeric */
-bool isnumeric(const std::string& s) {
+bool isnumeric(const string& s) {
     return all_of(s.begin(), s.end(), [](char c){
         return isdigit(c);
     });
@@ -87,17 +87,17 @@ long long getNumberUser(const string& name = "your number"){
  */
 vector<string> spilt(const string& target ,const string &delimiter){
     vector<string> result;
-    string temp;
+    string currentWord;
 
     for(char i : target){
-        temp.push_back(i);
+        currentWord.push_back(i);
         if(i == delimiter[0]){
-            temp.pop_back();
-            result.push_back(temp);
-            temp = "";
+            currentWord.pop_back();
+            result.push_back(currentWord);
+            currentWord = "";
         }
     }
-    result.push_back(temp);
+    result.push_back(currentWord);
     return result;
 }
 /* @brief  Manage user interface with this problem and take parameters */
@@ -211,6 +211,7 @@ bool teddyBearPicnic(long long numberBears){
 }
 /* @brief  Manage user interface with this problem and take parameters */
 void problem_9(){
+    cout << "Welcome to Teddy Bear picnic!!\n";
     long long numberBears = getNumberUser("the number of Bears");
     cout << (teddyBearPicnic(numberBears) ?  "You win" : "You Lose") << endl;
 }

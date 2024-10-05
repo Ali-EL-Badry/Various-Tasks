@@ -1,59 +1,90 @@
 /*
- * File Name : Task 1 (Tempo)
- * Purpose : (Tempo)
- * Section : (Tempo)
- * Auther 1 of (1|4|7|10) : Alaa Tarik Mohammed Salah El-Deen     * ID 1 : 20230064
- * Auther 2 of (2|5|8|11) : Fatema El-Zhraa Ahmed Mohamed El-Fiky * ID 2 : 20230280
- * Auther 3 of (3|6|9|12) : Aly El-Deen Yasser Ali Mohammed       * ID 3 : 20231109
- * TA :
- * Date : 8 Oct 2023
+ * @File      : CS213_T1_20231109.cpp
+ * @brief     : This Program contains Different Problems/Games that serve different Tasks
+ * @auther    : Aly El-Deen Yasser Ali Mohammed
+ * @ID        : 20231109
+ * @Section   : (Tempo)
+ * @TA        : (Tempo)
+ * @date      : 8 Oct 2023
+ * @Details   : This program contains 4 Problems/Games :
+                1) Spilt problem        : In this Problem we take the string from user then split it
+                                          to a vector of words of this sentence at the delimiter place
+
+                2) ToBinary             : In this Problem we have two ways to change number to binary
+                                             I)  we change the number that we take form the user to
+                                                 a binary number Range ( 0 --> LONG_LONG_MAX)
+                                             II) We get all the possible number that we will get from this
+                                                 prefix and suffix
+
+                3) teddyBearPicnic      : In this Game we try to find a way to reduce the number that we
+                                          take from user to 42 to win the Game
+
+                4) phishingScanner      : In this Problem we try to give score to the email we get so user
+                                          Can Determine if it is spam or no
  */
 
-// Defining only
-#include <bits/stdc++.h>
-#define ll long long
+// Used Liberaries
+#include <iostream>
+#include <vector>
+#include <map>
+#include <fstream>
+#include <algorithm>
 using namespace std;
 
-// Common Used Functions :
+/* Common Used Functions :*/
 
-// To check the choices of the menu
+/*
+ * @brief  To check the choices of the menu
+ * @param  menuText It is the text that we want to print
+ * @param  choices  It is the choices that is in the menu
+ * @return return the last correct choice for user
+ */
 string check_menu(const string& menuText , vector<string>choices){
     string correct;
 
     while(true){
         cout << menuText ;
-        if (cin.peek() == '\n') cin.ignore();
         getline(cin, correct);
         if(correct.size() != 1 || find(choices.begin(),choices.end(), correct) == choices.end())
-            cout << "Please Enter a valid option\n" ;
+            cerr << "Please Enter a valid option\n" ;
         else
             break;
     }
+    cin.ignore(0, '\n');
 
     return correct;
 }
 
+/* @brief To check if the entire string is numeric */
+bool isnumeric(const std::string& s) {
+    return all_of(s.begin(), s.end(), [](char c){
+        return isdigit(c);
+    });
+}
 
-//Check is it a number
-bool isnumeric(const string& s){
-    for( auto c: s){
-        if(!isdigit(c))
-            return false;
+/*
+ * @brief  To check that the user number is
+ * @param  name it is what we want from user
+ * @return returns the last correct number that the user entered
+ */
+long long getNumberUser(const string& name = "your number"){
+    string number;
+    while (true){
+        cout << "Enter " << name << " : ";
+        getline(cin, number);
+        if(isnumeric(number))
+            break;
+        cerr << "Pls Enter a Valid Number!! \n";
     }
-
-    return  true;
+    return stoll(number);
 }
 
-
-//Lower strings
- string Lower(string s){
-    for(auto& ch : s)
-        ch=tolower(ch);
-    return s;
-}
-
-// Problem 3 :
-
+/*
+ * @brief  Spilt what we will spilt according to delimiter
+ * @param  target    is the complete sentence that we get from user
+ * @param  delimiter is the place that we will split at
+ * @return Retutn a vector that consist of spilted strings at the place of delimiter
+ */
 vector<string> spilt(const string& target ,const string &delimiter){
     vector<string> result;
     string temp;
@@ -67,80 +98,130 @@ vector<string> spilt(const string& target ,const string &delimiter){
         }
     }
     result.push_back(temp);
-
     return result;
 }
+/* @brief  Manage user interface with this problem and take parameters */
 void problem_3(){
     string target, delimiter;
-
+    // To take the sentence from user
     cout << "Enter The sentence You want to split: ";
     getline(cin,target);
 
+    // To check what user want
     string delimiterMenu = "Do you want Delimiter to be as Default ' ' or something else? \n1) Default\n2) Enter your Own\nYour choice : ";
     vector<string> delimiterChoices = {"1","2"};
     string menuAnswer = check_menu(delimiterMenu, delimiterChoices);
+
 
     if(menuAnswer == "1")
         delimiter = " ";
     else{
         cout << "Enter your Delimter : ";
-        cin >> delimiter;
+        getline(cin,delimiter);
     }
 
-    vector<string> result;
-    result = spilt(target, delimiter);
+    vector<string> result = spilt(target, delimiter);
 
+    // To Print the Result
     cout << "Your vector = [ ";
-    for(ll i = 0 ; i< result.size()-1 ; i++)
+    for(int i = 0 ; i< result.size()-1 ; i++)
         cout << "\"" << result[i] << "\", ";
     cout << "\"" << result.back() << "\" ";
     cout << "]\n";
 }
 
-// Problem 6 :
-// Problem 9 :
+/*
+ * @brief  Change the number that you will get to a binary number
+ * @param  number the number that the user entered
+ */
+void printBinary(long long number){
+    if (number > 1)
+        printBinary(number / 2);
+    cout << number % 2;
+}
+/*
+ * @brief  Get all the possible binary number with definite suffix
+ * @param  prefix       the number that the user entered to complete on
+ * @param  numberSuffix the number of suffix terms that need to be added
+ */
+void allPossibleBinary(const string& prefix, long long numberSuffix) {
+    if (numberSuffix == 0)
+        cout << prefix << endl;
+    else {
+        allPossibleBinary(prefix + "0", numberSuffix - 1);
+        cout << " ";
+        allPossibleBinary(prefix + "1", numberSuffix - 1);
+    }
+}
 
-bool gameJudge(ll n){
-    if (n == 42)
+/* @brief  Manage user interface with this problem and take parameters */
+void problem_6(){
+    string menu = "Welcome to binary Calculator\nWhich one do you want to do ? \n1) Print Binary number of your number\n2) Print results of prefix and suffix\nYour Choice: ";
+    vector<string> menuChoices = {"1", "2"};
+
+    string menuChoice = check_menu(menu, menuChoices);
+
+    // To changee number to binary
+    if(menuChoice == "1"){
+        long long number = getNumberUser();
+        cout << "Your number in Binary is:";
+        printBinary(number);
+        cout << '\n';
+    }
+    // To get possible results from this prefix and suffix
+    else{
+        string prefix = to_string(getNumberUser("your prefix"));
+        long long numberSuffix = getNumberUser("number of suffix terms");
+
+        cout << "The possible answers are :";
+        allPossibleBinary(prefix,numberSuffix);
+        cout << '\n';
+    }
+}
+
+/*
+ * @brief  takes number of Bear and see if we can win
+ * @param  numberBears the number that the game start with
+ * @return Bool value with win or lose
+ */
+bool teddyBearPicnic(long long numberBears){
+    // To check if we made it to 42 or not
+    if (numberBears == 42)
         return true;
-
-    if (n < 42)
+    if (numberBears < 42)
         return false;
 
-    if (n % 2 == 0 && gameJudge(n / 2))
+    // First condition
+    if (numberBears % 2 == 0 && teddyBearPicnic(numberBears / 2))
         return true;
 
-    if (n % 3 == 0 || n % 4 == 0){
-        ll last_digit = n % 10, second_digit = (n % 100) / 10;
-        ll product = last_digit * second_digit;
-        if (product > 0 && gameJudge(n - product))
+    // Second condition
+    if (numberBears % 3 == 0 || numberBears % 4 == 0){
+        long long last_digit = numberBears % 10, second_digit = (numberBears % 100) / 10;
+        long long product = last_digit * second_digit;
+        if (product > 0 && teddyBearPicnic(numberBears - product))
             return true;
     }
 
-    if (n % 5 == 0 && gameJudge(n - 42))
+    // Third condition
+    if (numberBears % 5 == 0 && teddyBearPicnic(numberBears - 42))
         return true;
 
     return false;
 }
-
+/* @brief  Manage user interface with this problem and take parameters */
 void problem_9(){
-
-    string numberBears;
-
-    while (true){
-        cout << "Enter the number of bears : ";
-        getline(cin,numberBears);
-        if(isnumeric(numberBears))
-            break;
-        cout << "Please Enter a valid option" << endl;
-    }
-
-    cout << (gameJudge(stoll(numberBears)) ?  "You win" : "You Lose") << endl;
-
+    long long numberBears = getNumberUser("the number of Bears");
+    cout << (teddyBearPicnic(numberBears) ?  "You win" : "You Lose") << endl;
 }
 
-// Problem 12:
-void problem_12(){
+/*
+ * @brief  it give each word definit number of point which its sum identify if it is scam or not
+ * @param  email it is the file that contain the spam email
+ */
+
+void scamEmailDetecter(ifstream& email) {
+    // Some possible words and their phishing points
     map<string, int> phishingWords = {
         {"temporary", 3}, {"suspension", 2}, {"urgent", 3},{"click", 3},
         {"verify", 3}, {"password", 3}, {"account", 1},{"login", 2},
@@ -152,35 +233,99 @@ void problem_12(){
         {"payment", 3}, {"access", 3}, {"locked", 3}, {"service", 2},
     };
 
-    ifstream email(R"(C:\Users\HP\OneDrive\Desktop\My_code\C212 Assignment\Task_1\email.txt)");
-    ofstream outputFile(R"(C:\Users\HP\OneDrive\Desktop\My_code\C212 Assignment\Task_1\output.txt)");
-    if(!email.is_open() || !outputFile.is_open()){
-        cerr << "Cant open the file\n";
-        return;
-    }
-    ll totalValuePoints = 0;
-
+    // Output file to store results
+    ofstream outputFile("output.txt");
+    long long totalValuePoints = 0;
     string temp;
-    map <string,int> numberRepetation;
-    while(email >> temp)
-        numberRepetation[temp]++;
+    map<string, int> wordCount;
 
-    for(auto i : numberRepetation){
-        if(phishingWords[i.first] != 0){
-            int totalPointWord = i.second * phishingWords[i.first];
-            outputFile <<  "Phishing term: \"" << i.first << "\", Occurrences: " << i.second << ", Points: " << totalPointWord << endl;
-            totalValuePoints += totalPointWord;
+    // Get all the words in the email file
+    while (email >> temp) {
+        transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
+        wordCount[temp]++;
+    }
+
+    // Iterate through the counted words and check against phishing words
+    for (const auto& entry : wordCount) {
+        const string& word = entry.first;
+        int count = entry.second;
+        if (phishingWords[word] != 0) {
+            int points = count * phishingWords[word];
+            outputFile << "Phishing term: \"" << word << "\", Occurrences: " << count << ", Points: " << points << endl;
+            totalValuePoints += points;
         }
     }
-    outputFile << "Total points = " << totalValuePoints << '\n';
 
-    email.close();
+    outputFile << "Total points = " << totalValuePoints << '\n';
     outputFile.close();
 }
 
+/* @brief  Manage user interface and take parameters */
+void Problem_12() {
+    string name;
+    ifstream file;
+
+    cout << "Welcome to Scam Email Detector\n";
+
+    while (true) {
+        cout << "Enter the path of the email file: ";
+        getline(cin, name);
+
+        // Try opening the file with the given path
+        file.open(name);
+
+        // Check if the file was successfully opened
+        if (file.is_open()) {
+            cout << "File opened successfully.\n";
+            break;
+        }
+        cerr << "Error: Could not open file. Please enter a valid file path.\n";
+    }
+
+    scamEmailDetecter(file);
+    cout << "Answer executed in the output file succesfully\n";
+    file.close();
+}
+
 // Menu :
+void menu(){
+    // To keep Program Running
+    while (true){
+        // The Main Menu
+        string menu = "Welcome to our Program :\nWhich one do you want ?\n1) Split Problem\n2) Binary Calculator\n3) Teddy Bear Picnic\n4) Scam Email Detector\n5) Exit\nEnter your choice: ";
+        vector<string> choices = {"1","2","3","4","5"};
+        string choice = check_menu(menu,choices);
 
+        // If you want spilt problem
+        if (choice == "1")
+            problem_3();
+        // if you want binary calculator
+        else if (choice == "2")
+            problem_6();
+        // if you want teddy bear picnic Game
+        else if (choice == "3")
+            problem_9();
+        // if you want scam email detector
+        else if (choice == "4")
+            Problem_12();
+        // Exit
+        else if (choice == "5"){
+            cout << "Exiting program. Goodbye!\n";
+            break;
+        }
 
+        string endMenu = "Do you want to continue?\n1) Yes\n2) No\nYour choice is :";
+        vector<string> endMenuChoices = {"1", "2"};
+        string endChoice = check_menu(endMenu, endMenuChoices);
+        if(endChoice == "2"){
+            cout << "Exiting program. Goodbye!\n";
+            break;
+        }
+    }
+}
+
+/* === Main Function === */
 int main(){
+    menu();
     return 0;
 }

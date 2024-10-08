@@ -70,6 +70,7 @@ string validation(string name){
 
 // Problem 2 :
 
+//need some clean code
 void problem_2(){
 
 
@@ -99,6 +100,7 @@ void problem_2(){
     if(!part.empty()){
         v.push_back(part);
     }
+
 
 
     for (int i = 0; i < v.size(); ++i) {
@@ -136,11 +138,14 @@ void problem_2(){
 // Problem 5 :
 
 struct player{
+
 private:
+
     string name;
     double score;
 
 public:
+
     void print (const vector <player> & v);
     void add (vector <player> & v);
     static bool way(player p1, player p2);
@@ -166,8 +171,6 @@ void player :: add (vector <player> & v){
     x:
 
 
-
-
     cout<<"Enter the name : ";getline(cin,p.name);// s=p.name;
 
    /* cin.ignore();*/
@@ -179,7 +182,6 @@ void player :: add (vector <player> & v){
         cout << "Please Enter a valid number : ";
         cin >> scores;
     }
-
     cin.ignore();
 
 
@@ -201,7 +203,6 @@ void player :: getter( const vector<player> & v){
 
     string n;
 
-
     cout<<"Enter the name : ";  getline(cin,n);
 
    /* cin.ignore();*/
@@ -217,12 +218,12 @@ void player :: getter( const vector<player> & v){
     for (int i = 0; i < size ; ++i) {
 
 
-
         if(n==v[i].name) {
             cout<<"The highest score of \'"<<v[i].name<<'\''
                 << " is : " << v[i].score << '\n';
             return;
         }
+
 
     }
 
@@ -273,17 +274,38 @@ void problem_5 (){
 
 
 // Problem 8 :
-ll num=4,spaces=0;
+
 void recurse(int n, int i){
-   if(num>n)
-       return;
-   for()
+
+    if(n==1) {
+        for(int j=0;j<i;j++)
+            cout<<" ";
+        cout<<"*\n";
+        return;
+    }
+
+    recurse(n/2,i);
+
+
+    for(int j=0;j<i;j++){
+        cout<<" ";
+    }
+    for(int j=0;j<n;j++){
+        cout<<"* ";
+    }cout<<'\n';
+
+
+    recurse(n/2,i+n);
+
+
+
+
 }
 void problem_8(){
 
 string n;cout<<"Welcome to the drawing program\n";
 Again:
-   cout<<"Enter an integer power of 2 as : 2 , 4, 8, 16, ... ";
+   cout<<"Enter an integer power of 2 as : 2 , 4, 8, 16, ... \n";
    cout<<"Enter the number : ";
    cin>>n;
 
@@ -291,10 +313,26 @@ Again:
         cout<<"Please Enter a valid number : ";cin>>n;
     }
 
-    if(__builtin_popcount(stoi(n))!=1)
+    if(stoi(n)<0||__builtin_popcount(stoi(n))!=1) {
+        cout<<"Please enter a valid number of power of two !!\n\n";
         goto Again;
+    }
+    cin.ignore();
 
-    recurse(stoi(n),0);
+
+    Again_2:
+    string spaces;cin>>spaces;
+    while (!isnumeric(spaces)){
+        cout<<"Please Enter a valid number : ";cin>>spaces;
+    }
+    if(stoi(spaces)<0) {
+        cout<<"Please enter a valid number of power of two !!\n\n";
+        goto Again_2;
+    }
+    cin.ignore();
+
+
+    recurse(stoi(n),stoi(spaces));
 
 
 
@@ -334,10 +372,10 @@ void problem_11(){
     /*cin.ignore();*/
 
     ifstream files1 (name1);
-    ifstream  files2 (name2);
+     ifstream  files2 (name2);
 
     if(choice=="1"){
-        char c1=files1.get() ,c2=files2.get();
+        char c1=files1.get() ,c2=files2.get(),k1,k2;
         //bool equal = true;
 
         ll number=1;
@@ -350,6 +388,7 @@ void problem_11(){
             if(c1 =='\n'){
                 number++;
             }
+            k1=c1;k2=c2;
             c1=files1.get(); c2=files2.get();
         }
       // counting number of lines
@@ -359,33 +398,33 @@ void problem_11(){
             cout<<"The two files are identical \n";
         else if( c1==EOF && c2!=EOF) {
             cout << "The two files are not identical \n";
-            c2=files2.get();
+            //c2=files2.get();
             if(c2=='\n'){
-                cout<<"The difference is in the line "<<++number<<"There is No line \n";
+                cout<<"Line : "<<++number<<"First File : No line \n"<<"Second File : \'"<<"\\n"<<"\'\n";
             }else{
-                cout<<"The difference is in the line "<<number<<" The second file contains \'"<<c2<<'\''<<'\n';
+                cout<<"Line : "<<number<<"First File :  \'"<<k1<<'\''<<'\n'<<"The Second file contains \'"<<c2<<'\''<<'\n';
             }
            /* cout<<"The first file is smaller than the second file \n";*/
         }else if( c1!=EOF && c2==EOF ){
             cout << "The two files are not identical \n";
-            c1=files2.get();
+           // c1=files1.get();
             if(c1=='\n'){
-                cout<<"The difference is in the line "<<++number<<"There is No line \n";
+                cout<<"Line : "<<++number<<"First File : \'"<<"\\n"<<'\''<<'\n'<<"Second File :  No line"<<"\n";
             }else{
-                cout<<"The difference is in the line "<<number<<" The First file contains \'"<<c1<<'\''<<'\n';
+                cout<<"Line : "<<number<<"First File :  \'"<<c1<<'\''<<'\n'<<"The Second file contains \'"<<k2<<'\''<<'\n';
             }
            /* cout<<"The second file is smaller than the first file \n";*/
         }else{
             cout << "The two files are not identical \n";
-            cout<<"The difference in line number "<<number<<" is :   "<<"First file contains--> \'"<<c1<<"\'"
-                <<"  and the second file contains --> \'"<<c2<<"\'\n\n";
+            cout<<"Line : "<<number<<"\nFirst file : \'"<<c1<<"\'"<<'\n'
+                <<"Second file contains : \'"<<c2<<"\'\n\n";
         }
 
 
 
     }else{
 
-     string s1,s2;
+     string s1,s2,s,ss;char k1,k2;
      files1>>s1;files2>>s2;
         ll number=1;
 
@@ -396,6 +435,7 @@ void problem_11(){
           if(cc=='\n')
               number++;
       }
+      s=s1;ss=s2;
       files1>>s1;files2>>s2;
 
       }
@@ -403,38 +443,37 @@ void problem_11(){
           cout<<"The two files are identical \n";
       }else if( files1.eof()&&!files2.eof()){
 
-          string s,ss;
-          getline(cin,ss);
-          if(find(ss.begin(),ss.end(),'\n')!=ss.end()){
-              files2>>s;
-              if(s.empty()){
-                  cout<<"The Two";//continue edit
-              }
-          }else{
-              bool yes=false;
-              string sout;
-              for(auto c: ss){
-                  if(isalpha(c))
-                  {
-                      sout+=c;
-                      yes=true;
-                  }
-              }
-              if(yes){
+
                   cout<<"The two files are not identical \n";
-                  cout<<"The difference is in line "<<number<<" the second file contains --> "<<sout<<'\n';
-              }else{
-                  cout<<"The two files are identical \n";
-              }
-          }
+
+
+
 
 
       }else if(!files1.eof()&&files2.eof()){
+
+          string parts;
+          ll nums=number;
+          while (true){
+              if(k2!='\n'&&k2!=' ')
+                  break;
+              if(k2=='\n'){ number++; }
+              files1.get(k2);
+          }
+          files2>>parts;
           cout<<"The two files are not identical \n";
-          cout<<"The second file is smaller than the first file \n";
+          cout<<"Line : "<<number<<"The First File : "<<k2+parts<<'\n'<<"The Second File : ";
+          if(number !=nums){
+              cout<<"No Line \n";
+          }else{
+              cout<<ss;
+          }
+
+
+
       }else{
           cout<<"The two files are not identical \n";
-          cout<<"The difference is : The first file contains --> \""<<s1<<"\""<<" and the second file contains --> \""<<s2<<"\"";
+          cout<<"Line : "<<number<<"\nFirst File \""<<s1<<"\""<<" \nSecond File \""<<s2<<"\"";
       }
 
 
@@ -448,14 +487,15 @@ void problem_11(){
 
 
 int main(){
-   //problem_11();
-  //problem_5();
+
+
   cout<<"\n\n######### Welcome to our program #########\n\n";
     while (true) {
 
 
         cout << "The Menu : \n\n" << "1.Converting Male speech into Neutral speech\n" <<
              "2.Top 10 Players\n3.Some Draws\n4.Comparing Files\n6.Exit";
+        cout<<"\n\nEnter your choice : ";
 
 
         string choice;
@@ -467,17 +507,27 @@ int main(){
         cin.ignore();
 
 
-        if (choice == "1") {
+        if (choice == "1") {//it is okay
+
             problem_2();
-        } else if (choice == "2") {
+
+        } else if (choice == "2") {//it is okay
+
             problem_5();
+
         } else if (choice == "3") { //draw problem 8
 
+            problem_8();
+
         } else if (choice == "4") {
+
             problem_11();
+
         } else {
+
             cout << "\n\n    ###### Thanks for using that program ######  \n\n";
             break;
+
         }
 
     }

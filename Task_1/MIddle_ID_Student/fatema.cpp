@@ -1,6 +1,10 @@
 /*
  * File Name : Task 1 (Tempo)
- * Purpose : (Tempo)
+ * Purpose : Problem 2 | 5| 8 | 11
+ * Problem 2 --> it converts the male speech into general speech
+ * Problem 5 --> it gets the top 10 players and their highest score
+ * Problem 8 --> it draws a certain pattern tha t are 2 power n and gets all the 2 power less than that number in recursive calls
+ * Problem 11 -->it compares two files and giving two options compare through char by char  or word by word
  * Section : (Tempo)
  * Auther 1 of (1|4|7|10) : Alaa Tarik Mohammed Salah El-Deen     * ID 1 : 20230064
  * Auther 2 of (2|5|8|11) : Fatema El-Zhraa Ahmed Mohamed El-Fiky * ID 2 : 20230280
@@ -400,9 +404,9 @@ void problem_11(){
             cout << "The two files are not identical \n";
             //c2=files2.get();
             if(c2=='\n'){
-                cout<<"Line : "<<++number<<"First File : No line \n"<<"Second File : \'"<<"\\n"<<"\'\n";
+                cout<<"Line : "<<++number<<'\n'<<"First File : No line \n"<<"Second File : \'"<<"\\n"<<"\'\n";
             }else{
-                cout<<"Line : "<<number<<"First File :  \'"<<k1<<'\''<<'\n'<<"The Second file contains \'"<<c2<<'\''<<'\n';
+                cout<<"Line : "<<number<<'\n'<<"First File :  \'"<<k1<<'\''<<'\n'<<"The Second file contains \'"<<c2<<'\''<<'\n';
             }
            /* cout<<"The first file is smaller than the second file \n";*/
         }else if( c1!=EOF && c2==EOF ){
@@ -413,11 +417,20 @@ void problem_11(){
             }else{
                 cout<<"Line : "<<number<<"First File :  \'"<<c1<<'\''<<'\n'<<"The Second file contains \'"<<k2<<'\''<<'\n';
             }
-           /* cout<<"The second file is smaller than the first file \n";*/
+
         }else{
             cout << "The two files are not identical \n";
-            cout<<"Line : "<<number<<"\nFirst file : \'"<<c1<<"\'"<<'\n'
+            if(c1=='\n')
+
+            cout<<"Line : "<<number<<"\nFirst file : \'"<<"\\n"<<"\'"<<'\n'
                 <<"Second file contains : \'"<<c2<<"\'\n\n";
+            if(c2=='\n')
+                cout<<"Line : "<<number<<"\nFirst file : \'"<<c1<<"\'"<<'\n'
+                    <<"Second file contains : \'"<<"\\n"<<"\'\n\n";
+            else
+                cout<<"Line : "<<number<<"\nFirst file : \'"<<c1<<"\'"<<'\n'
+                    <<"Second file contains : \'"<<c2<<"\'\n\n";
+
         }
 
 

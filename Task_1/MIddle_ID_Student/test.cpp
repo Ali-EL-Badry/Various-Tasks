@@ -279,19 +279,19 @@ void problem_5 (){
 
 // Problem 8 :
 
-void recurse(int n, int i){
+void recurse(int n, int space){
 
     if(n==1) {
-        for(int j=0;j<i;j++)
+        for(int j=0;j<space;j++)
             cout<<" ";
         cout<<"*\n";
         return;
     }
 
-    recurse(n/2,i);
+    recurse(n/2,space);
 
 
-    for(int j=0;j<i;j++){
+    for(int j=0;j<space;j++){
         cout<<" ";
     }
     for(int j=0;j<n;j++){
@@ -299,7 +299,7 @@ void recurse(int n, int i){
     }cout<<'\n';
 
 
-    recurse(n/2,i+n);
+    recurse(n/2,space+n);
 
 
 
@@ -330,7 +330,7 @@ void problem_8(){
         cout<<"Please Enter a valid number : ";cin>>spaces;
     }
     if(stoi(spaces)<0) {
-        cout<<"Please enter a valid number of power of two !!\n\n";
+        cout<<"Please enter a valid number !!\n\n";
         goto Again_2;
     }
     cin.ignore();

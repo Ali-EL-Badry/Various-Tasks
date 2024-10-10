@@ -176,12 +176,12 @@ void player :: add (vector <player> & v){
 
 
 
-    cout<<"Enter the score : ";cin>>scores;
+    cout<<"Enter the score : "; getline(cin , scores);
     while (!isnumeric(scores)) {
-        cout << "Please Enter a valid number : ";
-        cin >> scores;
+        cout << "Please Enter a valid number : \n";
+        getline(cin , scores);
     }
-    cin.ignore();
+
 
 
     p.score=stoll(scores);
@@ -204,7 +204,6 @@ void player :: getter( const vector<player> & v){
 
     cout<<"Enter the name : ";  getline(cin,n);
 
-    /* cin.ignore();*/
 
     int size;
 
@@ -241,12 +240,12 @@ void problem_5 (){
 
         string menu = "Choose from the following menu :\n\n1.Add Player\n2.Print the top 10 players\n3.Getting the highest score of certain player\n4.Exit that program \nEnter your choice : ";
         cout<<menu;
-        string choice ;cin>>choice;
+        string choice ;getline(cin,choice);
         while (choice!="1"&& choice!="2"&&choice!="3"&&choice!="4"){
-            cout<<"Please enter a valid choice : ";cin>>choice;
+            cout<<"Please enter a valid choice : \n"; getline(cin , choice);
         }
 
-        cin.ignore();
+
         if(choice=="1"){//Add
 
             Player[0].add(Player);
@@ -260,7 +259,11 @@ void problem_5 (){
 
         }else if (choice =="3"){//Getting score of a player
 
-            Player[0].getter(Player);
+            if(!Player.empty()){
+                Player[0].getter(Player);
+            }else{
+                cout<<"The List is empty add players first\n\n";
+            }
 
         }else {//exit
             cout<<"\n\n\n ######### Thanks for using that program #########\n\n\n";
@@ -354,12 +357,12 @@ void problem_11(){
     cout<<"Which type of compare do you want ? \n\nChoose from the following :\n1.Character by Character\n2.Word by Word \n\n ";
     cout<<"Enter your choice : ";
 
-    string choice;cin>>choice;
+    string choice;getline(cin,choice);
     while(choice!="2"&&choice!="1"){
-        cout<<"Please Enter a Valid Choice : ";
-        cin>>choice;
+        cout<<"Please Enter a Valid Choice : \n";
+        getline(cin , choice);
     }
-    cin.ignore();
+
     //Enter the files and some validations on them
     cout<<"Please Enter the file names !\n\n";
 
@@ -557,12 +560,12 @@ int main(){
 
 
         string choice;
-        cin >> choice;
+        getline(cin , choice);
         while (choice != "1" && choice != "2" && choice != "3" && choice != "4" && choice != "5") {
             cout << "Please Enter a Valid Choice : ";
-            cin >> choice;
+            getline(cin , choice);
         }
-        cin.ignore();
+
 
 
         if (choice == "1") {//masculine speech into general

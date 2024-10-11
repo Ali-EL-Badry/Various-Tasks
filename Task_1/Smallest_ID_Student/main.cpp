@@ -55,9 +55,105 @@ bool isnumeric(const string& s){
 
 //================================================================
 
+//validation for integer inputs
+double  validation (long double x,string message="please enter a positive intger number")
+{
+    cin>>x;
+//validation of the input
+    while(cin.fail()||x!= trunc(x)||x<0)
+    {
+        cerr<<message<<endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin>>x;
+    }
+    return x;
+}
+
+
+
+double  validation2 (long double x,string message="please enter a positive intger number")
+{
+    cin>>x;
+//validation of the input
+    while(cin.fail()||x!= trunc(x)||x<0||x>6)
+    {
+        cerr<<message<<endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin>>x;
+    }
+    return x;
+}
+
 
 // Problem 1 :
+void problem1() {
 
+    string input;
+//to detect the the number of space to erase it later
+    int num_of_space =0;
+
+    string message;
+//to detect if capital is needed or not
+    bool capital_needed=0;
+//to stop counting number of spaces and delete the right amount of it
+    bool space_detected=0;
+
+    cout << "Enter text and if you want to end write letter z in any case" <<endl;
+
+    while (true)
+    {
+
+        getline(cin, input);
+
+        if (input =="z"||input =="Z")  break;
+
+        message += input + " "; // Append the line with a space
+
+    }
+//    transform every letter to lowercase
+    transform(message.begin(),message.end(),message.begin(),::tolower);
+
+    message[0]=toupper(message[0]);
+
+    for (int i = 1; i < message.size(); ++i) {
+
+        if (message[i]==message[i-1]&&isspace(message[i]))
+        {
+            num_of_space++;
+            if (!space_detected)
+            {
+                space_detected=1;
+            }
+        }
+        if (space_detected&&!(isspace(message[i])))
+        {
+//            erase the extra spaces
+            message.erase(i-num_of_space,num_of_space);
+// returning to the right index after deleting
+            i-=num_of_space;
+
+            space_detected=0;
+
+            num_of_space=0;
+
+        }
+//        check if the capital letter is needed
+        if (message[i]=='.')
+        {
+            capital_needed=1;
+        }
+        if (capital_needed&&isalpha(message[i]))
+        {
+            message[i]=toupper(message[i]);
+
+            capital_needed=0;
+        }
+    }
+cout<<message;
+//end of problem 1
+ }
 // Problem 2 :
 bool check(const vector<pair<string,string>> & strings ,const vector<string> & v, long long index ){
 
@@ -203,6 +299,44 @@ void problem_3(){
 }
 
 // Problem 4 :
+void problem4(){
+
+    ll n;
+   n= validation(n);
+    ll arr[n-1];
+
+//    get an array from 2 : n
+    for ( ll i = 0; i < n-1; ++i)
+    {
+        arr[i]=i+2;
+    }
+
+    for ( ll i = 0; i < n-2; ++i)
+    {
+//        to prevent dividing by 0 =>0 represent circuled elements
+        if(arr[i]!=0)
+        {
+           for ( ll j = 2; j <=n/arr[i] ; ++j)
+            {
+                ll circled_index =arr[i]*j;
+                if ((circled_index-2)>0&&(circled_index-2)<n)
+                         {
+                           arr[circled_index-2]=0;
+                         }else break;
+            }
+        }
+    }
+//    print the result
+    for (int i = 0; i < n-1; ++i)
+    {
+
+        if (arr[i]!=0)
+        {
+            cout<<arr[i]<<' ';
+        }
+    }
+//    end of problem4
+}
 
 // Problem 5 :
 

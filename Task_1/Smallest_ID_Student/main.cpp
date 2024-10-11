@@ -55,8 +55,9 @@ bool isnumeric(const string& s){
 
 //================================================================
 
+
 //validation for integer inputs
-double  validation (long double x,string message="please enter a positive intger number")
+double  validation (ll &x,string message="please enter a positive intger number")
 {
     cin>>x;
 //validation of the input
@@ -72,13 +73,13 @@ double  validation (long double x,string message="please enter a positive intger
 
 
 
-double  validation2 (long double x,string message="please enter a positive intger number")
+double  validation2 (int &x,ll constrain,string message="please enter a positive intger number")
 {
     cin>>x;
 //validation of the input
-    while(cin.fail()||x!= trunc(x)||x<0||x>6)
+    while(cin.fail()||x!= trunc(x)||x<0||x>constrain)
     {
-        cerr<<message<<endl;
+        cerr<<message <<"from 0 to "<<constrain<<endl;
         cin.clear();
         cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
         cin>>x;
@@ -87,7 +88,7 @@ double  validation2 (long double x,string message="please enter a positive intge
 }
 
 
-// Problem 1 :
+//function of problem 1
 void problem1() {
 
     string input;
@@ -299,6 +300,8 @@ void problem_3(){
 }
 
 // Problem 4 :
+//function for problem4 ( prime numbers )
+
 void problem4(){
 
     ll n;
@@ -473,7 +476,87 @@ void problem_5 (){
 // Problem 6 :
 
 // Problem 7 :
+//define struct domain
+struct domina{
+    int leftdots;
+    int rightdots;
+    
+//function to get piece of domina
+    void setdomina()
+    {
+        cout<<"please assign the side of  pieces of domina left then right "<<endl;
+        cout<<"the left: "<<endl;
+        this->leftdots= validation2(leftdots,6,"please enter a number from 0 :6");
+        cout<<"the right: "<<endl;
+        this->rightdots= validation2(rightdots,6,"please enter a number from 0 :6");
+    }
+//function to print dominas
+    void getdomina()
+    {
+        cout<<this->leftdots<<'|'<<rightdots;
+    }
 
+};
+
+//boolean function to arrange dominas and return true if it can be arranged and false if not
+bool FormsDominoChain(vector<domina> & dominos,vector<domina> & organized_domina,vector<bool>&taken) 
+{
+    if(organized_domina.size()==dominos.size())
+    {
+        return true;
+    }
+    for (int i = 0; i < dominos.size(); ++i) 
+    {
+        if (organized_domina.empty()||(organized_domina.back().rightdots==dominos[i].leftdots&&!(taken[i])))
+        {
+            taken[i]=true;
+            organized_domina.push_back(dominos[i]);
+          bool ans=FormsDominoChain(dominos,organized_domina,taken);
+            organized_domina.pop_back();
+            taken[i]=false;
+            if (ans) return true;
+        }
+    }
+//    if the base case is not done return false
+    return false;
+}
+
+
+void problem7()
+{
+    
+cout<<"please enter the number of pieces from 1 to 28\n";
+   
+    int num_pieces;
+    
+    validation2(num_pieces,28);
+//   original set of domina
+    vector<domina>piecies(num_pieces);
+//    organized domina 
+    vector<domina>organized_domina;
+//    taken dominas as we do not want to use it again until the base case!!
+    vector<bool>taken(num_pieces,false);
+//get dominas
+    for (int i = 0; i < num_pieces; ++i) {
+        piecies[i].setdomina();
+    }
+
+    
+    if (FormsDominoChain( piecies, organized_domina,taken))
+    {
+     for (int i = 0; i < num_pieces; ++i)
+     {
+        organized_domina[i].getdomina();
+        if (i!=num_pieces-1)
+        {
+            cout<<" - ";
+        }
+     }
+    } else
+        {
+          cout<<"the dominos can not be organized"<<endl;
+        }
+}
 // Problem 8 :
 
 // Problem 9 :

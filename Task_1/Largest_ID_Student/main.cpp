@@ -1,10 +1,9 @@
 /*
- * @File      : CS213_T1_20231109.cpp
+ * @File      : A1_T1_S23_20231109.cpp
  * @brief     : This Program contains Different Problems/Games that serve different Tasks
  * @auther    : Aly El-Deen Yasser Ali Mohammed
  * @ID        : 20231109
- * @Section   : (Tempo)
- * @TA        : (Tempo)
+ * @Section   : S23
  * @date      : 8 Oct 2023
  * @Details   : This program contains 4 Problems/Games :
                 1) Spilt problem        : In this Problem we take the string from user then split it

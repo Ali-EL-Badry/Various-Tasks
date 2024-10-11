@@ -450,9 +450,10 @@ void problem_11(){
         char c1,c2;
         int number=1;
         c1=files1.get();c2=files2.get();
+        int number1=0, number2=0;
         while (!files1.eof()&&!files2.eof()){
 
-            int number1=0, number2=0;
+
             while (c1=='\n'||c1==' '){//as here we skip the spaces and the tabs and the new lines
                 if(c1=='\n')
                     number1++;
@@ -467,8 +468,8 @@ void problem_11(){
                 if(!word2.empty()){ word2.clear(); }
             }
             word1+=c1;word2+=c2;
-            //we say the difference in the line which has the largest index of lines
-           number+=max(number1,number2);
+
+
 
             if(word1!=word2)//We compare word to word
             {
@@ -477,6 +478,8 @@ void problem_11(){
             c1=files1.get();c2=files2.get();
 
         }
+        //we say the difference in the line which has the largest index of lines
+        number+=max(number1,number2);
        if(c1==EOF&&c2==EOF){
            cout<<"The two files are identical\n";
        }else if(c1==EOF && c2!=EOF){// if the first file is subset from the second file

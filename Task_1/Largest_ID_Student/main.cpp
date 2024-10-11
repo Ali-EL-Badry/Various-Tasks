@@ -45,7 +45,7 @@ string check_menu(const string& menuText , vector<string>choices){
         cout << menuText ;
         getline(cin, currentAnswer);
         if(currentAnswer.size() != 1 || find(choices.begin(),choices.end(), currentAnswer) == choices.end())
-            cerr << "Please Enter a valid option\n" ;
+            cout << "Please Enter a valid option\n" ;
         else
             break;
     }
@@ -73,7 +73,7 @@ long long getNumberUser(const string& name = "your number"){
         getline(cin, number);
         if(isnumeric(number))
             break;
-        cerr << "Pls Enter a Valid Number!! \n";
+        cout << "Pls Enter a Valid Number!! \n";
     }
     return stoll(number);
 }
@@ -145,7 +145,7 @@ void printBinary(long long number){
  */
 void allPossibleBinary(const string& prefix, long long numberSuffix) {
     if (numberSuffix == 0)
-        cout << prefix << endl;
+        cout << prefix << " ";
     else {
         allPossibleBinary(prefix + "0", numberSuffix - 1);
         cout << " ";
@@ -234,10 +234,10 @@ void scamEmailDetecter(ifstream& email) {
     };
 
     // Output file to store results
-    ofstream outputFile("output.txt");
-    long long totalValuePoints = 0;
     string temp;
     map<string, int> wordCount;
+    vector<string> finalOutput;
+    long long totalValuePoints = 0;
 
     // Get all the words in the email file
     while (email >> temp) {
@@ -251,13 +251,42 @@ void scamEmailDetecter(ifstream& email) {
         int count = entry.second;
         if (phishingWords[word] != 0) {
             int points = count * phishingWords[word];
-            outputFile << "Phishing term: \"" << word << "\", Occurrences: " << count << ", Points: " << points << endl;
+            string currentSentence = "Phishing term: \"" + word + "\", Occurrences: " + to_string(count) + ", Points: " + to_string(points) ;
             totalValuePoints += points;
+            finalOutput.push_back(currentSentence);
         }
     }
 
-    outputFile << "Total points = " << totalValuePoints << '\n';
-    outputFile.close();
+    // Menu to know where the user want the output
+    string outputMenu = "Where do you want to get the output?\n1) Terminal\n3) In another File\nYour choice:";
+    vector<string> outputMenuChoice = {"1", "2", "3"};
+    string choice = check_menu(outputMenu, outputMenuChoice);
+
+    if(choice == "1"){
+        for(const string &i : finalOutput )
+            cout << i << endl;
+        cout << "The total number of points: " << totalValuePoints <<endl;
+    }
+    else if(choice == "2"){
+        ofstream file;string name;
+        while (true) {
+            cout << "Enter the path of the email file: ";
+            getline(cin, name);
+
+            // Try opening the file with the given path
+            file.open(name);
+
+            // Check if the file was successfully opened
+            if (file.is_open()) {
+                cout << "File opened successfully.\n";
+                break;
+            }
+            cout << "Error: Could not open file. Please enter a valid file path.\n";
+        }
+        for(const string &i : finalOutput)
+            file << i << endl;
+        file << "The total number of points: " << totalValuePoints <<endl;
+    }
 }
 
 /* @brief  Manage user interface and take parameters */
@@ -279,11 +308,11 @@ void Problem_12() {
             cout << "File opened successfully.\n";
             break;
         }
-        cerr << "Error: Could not open file. Please enter a valid file path.\n";
+        cout << "Error: Could not open file. Please enter a valid file path.\n";
     }
 
     scamEmailDetecter(file);
-    cout << "Answer executed in the output file succesfully\n";
+    cout << "Answer Executed Succesfully\n";
     file.close();
 }
 

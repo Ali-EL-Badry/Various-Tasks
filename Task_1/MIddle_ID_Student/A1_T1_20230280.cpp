@@ -412,18 +412,19 @@ void problem_11(){
             cout << "The two files are not identical \n";
 
             if(c2=='\n'){
-                cout<<"Line : "<<++number<<'\n'<<"First File : No line \n"<<"Second File : \'"<<"\\n"<<"\'\n";
+                //c2=files2.get();
+                cout<<"Line : "<<number<<'\n'<<"First File : none \n"<<"Second File : \'"<<"\\n"<<"\'\n";
             }else{
-                cout<<"Line : "<<number<<'\n'<<"First File :  \'"<<k1<<'\''<<'\n'<<"Second File : \'"<<c2<<'\''<<'\n';
+                cout<<"Line : "<<number<<'\n'<<"First File : none"<<'\n'<<"Second File : \'"<<c2<<'\''<<'\n';
             }
 
         }else if( c1!=EOF && c2==EOF ){// if file2 is subset from file1
             cout << "The two files are not identical \n";
 
             if(c1=='\n'){
-                cout<<"Line : "<<++number<<"First File : \'"<<"\\n"<<'\''<<'\n'<<"Second File :  No line"<<"\n";
+                cout<<"Line : "<<number<<'\n'<<"First File : \'"<<"\\n"<<'\''<<'\n'<<"Second File :  none"<<"\n";
             }else{
-                cout<<"Line : "<<number<<"First File :  \'"<<c1<<'\''<<'\n'<<"Second File : \'"<<k2<<'\''<<'\n';
+                cout<<"Line : "<<number<<'\n'<<"First File :  \'"<<c1<<'\''<<'\n'<<"Second File : none"<<'\n';
             }
 
         }else{// the first difference before getting to the end of any file
@@ -497,9 +498,10 @@ void problem_11(){
            }else{
                cout<<"The two files are not identical \n";
                word2+=c2;
+               if(word1[word1.size()-1]==EOF){word1.pop_back();word2.pop_back();}
                if(files2.peek()!='\n'&&files2.peek()!=' '){ files2 >> s; }
 
-               cout <<"Line : "<<number<<'\n'<<"File 1 : "<<word1<<"\n"<<"File 2 : "<<"\""<<word2+s<<"\""<<'\n';
+               cout <<"Line : "<<number<<'\n'<<"File 1 : \""<<word1<<"\"\n"<<"File 2 : "<<"\""<<word2+s<<"\""<<'\n';
            }
        } else if(c1!=EOF&&c2==EOF){// if the second file is subset from the first file
                                  // it contains some cases
@@ -522,7 +524,8 @@ void problem_11(){
              cout<<"The two files are not identical\n";
              if(files1.peek()!='\n'&&files1.peek()!=' ') {files1>>s;}
              word1+=c1;
-             cout<<"Line : "<<number<<'\n'<<"File 1 : \""<<word1+s<<"\""<<'\n'<<"File 2 : "<<word2<<"\n";
+             if(word2[word2.size()-1]==EOF) { word2.pop_back(); word1.pop_back(); }
+             cout<<"Line : "<<number<<'\n'<<"File 1 : \""<<word1+s<<"\""<<'\n'<<"File 2 : \""<<word2<<"\""<<"\n";
          }
 
        }else{// the first difference before reaching to EOF to both files

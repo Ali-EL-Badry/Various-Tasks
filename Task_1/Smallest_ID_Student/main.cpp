@@ -601,7 +601,85 @@ void problem_9(){
 }
 
 // Problem 10:
+void problem10(){
+    ifstream replac;
+    replac.open("arab.txt");//the file which we take the words from it
+    string arr[49][2];
+// take from reolac as input for the array 
+    for (int i = 0; i < 49&&!(replac.eof()); ++i)
+    {
+        getline(replac,arr[i][1],',');//bad word
+        
+        getline(replac,arr[i][0],'\n');//good word
+    
+    }
+//    file closed
+replac.close();
 
+    string filename;
+    regex pattern ("^[a-zA-Z0-9\\s]+\\.?(?:txt)$");
+
+    ifstream inputfile;
+
+cout<<"please enter the name of the file which you want to edite (with txt format) \n";
+getline(cin,filename);
+//validation of the file name
+ while(!regex_match(filename,pattern))
+        {
+
+            cerr<<"please write it in the txt format\n";
+
+            filename="";
+
+            getline(cin,filename,'\n');
+        }
+
+        inputfile.open(filename);
+
+        while(inputfile.fail())
+        {
+            cerr<<"Failed to open it please write the name correctly\n";
+
+            getline(cin,filename,'\n');
+
+            while(!regex_match(filename,pattern)){
+
+                cerr<<"please write it in the txt format\n";
+
+                filename="";
+
+                getline(cin,filename,'\n');
+            }
+            inputfile.open(filename);
+        }
+//        end validation
+        ofstream outputfile("output.txt");
+
+    while(!(inputfile.eof()))
+    {
+      string line ;
+      getline(inputfile,line,'\n');
+
+        for (int i = 0; i < 49; ++i)
+        {
+           auto pos=line.find(arr[i][1]);
+           while(pos!=string :: npos)
+           {
+//               replace bad word with good word
+           line.replace(pos,arr[i][1].length(),arr[i][0]);
+//         edite the value of pos
+                   pos=line.find(arr[i][1],pos+arr[i][0].length());
+
+           }
+        }
+//        print the edited line in outputfile
+    outputfile<<line<<endl;
+    }
+
+//close files
+inputfile.close();
+outputfile.close();
+}
 // Problem 11:
 
 // Problem 12:

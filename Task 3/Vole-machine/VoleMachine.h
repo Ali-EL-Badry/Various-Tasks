@@ -2,13 +2,20 @@
 #define VOLE_MACHINE_VOLEMACHINE_H
 
 
-class Machine {};
 class Memory{};
 class Register{};
-class UI{};
-class CPU{};
 class CU{};
 class ALU{};
+class CPU{};
+class Machine {
+private:
+  CPU cpu;
+  Memory memory;
+
+public:
+
+};
+class UI{};
 
 
 #endif

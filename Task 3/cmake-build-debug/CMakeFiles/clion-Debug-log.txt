@@ -1,0 +1,4 @@
+"C:\Users\HP\AppData\Local\JetBrains\CLion 2024.1.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Users/HP/AppData/Local/JetBrains/CLion 2024.1.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S "C:\Users\HP\OneDrive\Desktop\My_code\programs_code\C++ codes\OOP Train" -B "C:\Users\HP\OneDrive\Desktop\My_code\programs_code\C++ codes\OOP Train\cmake-build-debug"
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++ codes/OOP Train/cmake-build-debug

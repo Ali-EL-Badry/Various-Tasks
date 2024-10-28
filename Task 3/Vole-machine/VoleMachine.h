@@ -1,13 +1,37 @@
 #ifndef VOLE_MACHINE_VOLEMACHINE_H
 #define VOLE_MACHINE_VOLEMACHINE_H
 #include <iostream>
-
+#include<vector>
+#include <string>
+#include<limits>
 using namespace std;
 
 //Classes
 
-class Memory{};
-class Register{};
+class Memory{
+
+protected:
+    vector<vector<string>> nstrctions;
+public:
+    Memory():nstrctions(16, vector<string>(16,"00")){}
+    void set_nstrctions(int row,int coloumn ,string &value);
+    void clear();
+    string get_index(int row,int coloumn);
+    void print();
+    vector<vector<string>> get_nstrctions();
+
+   
+};
+
+class Register{
+protected:
+    vector<string> rgstr;
+public:
+    void set_rgstr(int location,string &value);
+    void clear();
+    string get_rgstr(int location);
+    void print_rgstr();
+};
 class CU{};
 class ALU{};
 

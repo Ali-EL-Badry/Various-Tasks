@@ -48,10 +48,7 @@ void Memory::set_nstrctions(int row,int coloumn ,string &value)
 
     void Memory:: clear()
     {
-        for (auto& row : nstrctions)
-        {
-            std::fill(row.begin(), row.end(), "00");
-        }
+       nstrctions.clear();
     }
 
     string Memory::get_index(int row ,int coloumn)

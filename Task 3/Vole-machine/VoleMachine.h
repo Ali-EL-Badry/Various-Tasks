@@ -17,9 +17,9 @@ public:
     Memory():nstrctions(16, vector<string>(16,"00")){}
     void set_nstrctions(int row,int coloumn ,string &value);
     void clear();
-    string get_index(int row,int coloumn);
+    string& get_index(int row,int coloumn);
     void print();
-    vector<vector<string>> get_nstrctions();
+    const vector<vector<string>> & get_nstrctions();
 
 };
 class Register{
@@ -28,7 +28,7 @@ private:
 public:
     void set_rgstr(int location,string &value);
     void clear();
-    string get_rgstr(int location);
+    string& get_rgstr(int location);
     void print_rgstr();
 };
 class CU{};
@@ -49,14 +49,14 @@ private:
 
 public:
     // show the PC ,IR after we finish
-    void fetch(int &row,int &column,vector<vector<string>>&memo );
+    void fetch(int &row,int &column,const vector<vector<string>>&memo );
 
     //explain the decode or the meaning of the instruction means what by the cout
     // 1 -> cu // 2->alu // 3->c000
     int decode();
 
     //execute then show memo, registers
-    bool excute(int Case,vector<vector<string>>&memo);//we have access to the registers
+    bool excute(int Case/*,vector<vector<string>>&memo*/);//we have access to the registers
     //if zero continue , else stop
 
     void clear();//++

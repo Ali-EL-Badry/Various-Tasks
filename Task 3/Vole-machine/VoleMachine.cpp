@@ -32,7 +32,7 @@ void Memory:: clear()
     nstrctions.clear();
 }
 
-string Memory::get_index(int row ,int coloumn)
+string& Memory::get_index(int row ,int coloumn)
 {
     while(cin.fail()||row>=16||row<0)
     {
@@ -69,7 +69,7 @@ void Memory:: print(){
 
 }
 
-vector<vector<string>> Memory::get_nstrctions(){
+const vector<vector<string>> & Memory::get_nstrctions(){
 
     return nstrctions;
 }
@@ -94,7 +94,7 @@ void Register:: clear()
     rgstr.clear();
 }
 
-string Register:: get_rgstr(int location)
+string& Register:: get_rgstr(int location)
 {
     while(cin.fail()||location>=16||location<0)
     {
@@ -130,14 +130,14 @@ void Register ::print_rgstr()
 /////////////////
 
 ////////////cpu implementation///////////////
-//**
+
 void CPU::clear() {
     IR.clear();
     PC.clear();
     registers.clear();//clean registers
 }
 //**
-void CPU ::fetch(int& row,int& column,vector<vector<string>>&memo) {
+void CPU ::fetch(int& row,int& column,const vector<vector<string>>&memo) {
     //may be will be out , that will be better
     /*cout<<"IR : "<<IR<<'\n';
     cout<<"PC : "<<*PC<<'\n';*/
@@ -259,13 +259,14 @@ int CPU  ::decode() {
 
 
 }
-bool CPU::excute(int Case, vector<vector<std::string>> &memo) {
+bool CPU::excute(int Case/*, vector<vector<std::string>> &memo*/) {
 
     if(Case==3){
         return 1;
     }
     if(Case==1){
         //cu
+       
 
 
     }else{
@@ -277,15 +278,14 @@ bool CPU::excute(int Case, vector<vector<std::string>> &memo) {
                 R1[i-1]=stoi(s);
             }else{
                 R1[i-1]=IR[i]-'A'+10;
-
             }
 
         }
 
         if(IR[0]=='5'){
-            // pass index1,2,3, register
+            // pass getter by refernce
         }else{
-            // pass index1,2,3, register
+            // pass getter by refernce
         }
     }
 

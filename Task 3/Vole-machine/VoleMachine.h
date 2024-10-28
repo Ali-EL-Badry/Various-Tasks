@@ -1,14 +1,15 @@
 #ifndef VOLE_MACHINE_VOLEMACHINE_H
 #define VOLE_MACHINE_VOLEMACHINE_H
 #include <iostream>
-#include<vector>
-#include <string>
-#include<limits>
+#include <fstream>
+#include <vector>
+
 using namespace std;
 
 //Classes
 
 class Memory{
+private:
     vector<vector<string>> nstrctions;
 public:
     Memory():nstrctions(16, vector<string>(16,"00")){}
@@ -18,10 +19,9 @@ public:
     void print();
     vector<vector<string>> get_nstrctions();
 
-   
 };
-
 class Register{
+private:
     vector<string> rgstr;
 public:
     void set_rgstr(int location,string &value);
@@ -36,24 +36,25 @@ class ALU{};
 class CPU{
 private:
 
+
     string IR ;
-    string * PC ;
+    string  PC ;
     Register registers;
     ALU alu;
     CU cu ;
 
-    void valid(string IR );
+    bool valid(string IR );
 
 public:
     // show the PC ,IR after we finish
-    void fetch(string * PC );
+    void fetch(int &row,int &column,vector<vector<string>>&memo );
 
-    //explain the decode or the meaning od the instruction means what by the cout
+    //explain the decode or the meaning of the instruction means what by the cout
     // 1 -> cu // 2->alu // 3->c000
-    int decode(string IR);
+    int decode();
 
     //execute then show memo, registers
-    void excute(int Case);
+    void excute(int Case,vector<vector<string>>&memo);//we have access to the registers
 
     void clear();//++
     string getter_PC();
@@ -75,9 +76,12 @@ public:
     // show options to clear //++
     void clear(string option );// 1. if to clear registers (of course will be the cpu too),2. clean memo ,3. clean all
 
-    // Take option to see option of storing way
-    void load_file(bool option,string name);
-    void show_machine();
+//0 -> all , 1 -> step by step
+    void load_file(bool option,string name);//add c000 if not found in the end of the file
+
+    // weather the whole thing or
+    // step by step
+    void show_machine(bool option);
 
 };
 class UI{};

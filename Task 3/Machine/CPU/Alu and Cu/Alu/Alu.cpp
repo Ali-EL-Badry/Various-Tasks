@@ -1,6 +1,6 @@
 #include "Alu.h"
 
-#include <cmath>
+
 
 string Alu::decToHex(const string& number){
     long long Number = stoll(number);

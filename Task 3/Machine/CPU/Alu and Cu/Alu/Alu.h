@@ -3,6 +3,7 @@
 #define ALU_H
 
 #include <string>
+#include <cmath>
 using namespace std;
 
 class Alu {

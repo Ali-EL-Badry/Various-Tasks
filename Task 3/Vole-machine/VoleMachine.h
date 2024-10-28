@@ -9,8 +9,6 @@ using namespace std;
 //Classes
 
 class Memory{
-
-protected:
     vector<vector<string>> nstrctions;
 public:
     Memory():nstrctions(16, vector<string>(16,"00")){}
@@ -24,7 +22,6 @@ public:
 };
 
 class Register{
-protected:
     vector<string> rgstr;
 public:
     void set_rgstr(int location,string &value);

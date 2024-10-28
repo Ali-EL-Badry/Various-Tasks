@@ -56,7 +56,8 @@ public:
     int decode();
 
     //execute then show memo, registers
-    void excute(int Case,vector<vector<string>>&memo);//we have access to the registers
+    bool excute(int Case,vector<vector<string>>&memo);//we have access to the registers
+    //if zero continue , else stop
 
     void clear();//++
     string getter_PC();

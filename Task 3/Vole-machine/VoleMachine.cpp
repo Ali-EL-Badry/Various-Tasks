@@ -109,11 +109,6 @@ void Register ::print_rgstr()
 {
     for (int i = 0; i < 16; ++i)
     {
-        if (i<10){
-            cout<<i<<'\t';
-        }else{
-            cout<<char('A'+(i%10))<<'\t';
-        }
         cout<<rgstr[i]<<endl;
     }
 }
@@ -253,8 +248,51 @@ bool CPU ::valid(std::string ir) {
 }
 int CPU  ::decode() {
 
+   if(IR[0]=='1'||IR[0]=='2'||IR[0]=='3'||IR[0]=='4'||IR[0]=='B'){
+       return 1;
+   }
+   else if( IR[0]=='5'||IR[0]=='6'){
+       return 2;
+   }else if(IR=="C000"){
+       return 3;
+   }
+
 
 }
+bool CPU::excute(int Case, vector<vector<std::string>> &memo) {
+
+    if(Case==3){
+        return 1;
+    }
+    if(Case==1){
+        //cu
+
+
+    }else{
+        //alu
+        int R1[3];string s;
+        for (int i = 1; i <= 3; ++i) {
+            if(isdigit(IR[i])){
+                s=IR[i];
+                R1[i-1]=stoi(s);
+            }else{
+                R1[i-1]=IR[i]-'A'+10;
+
+            }
+
+        }
+
+        if(IR[0]=='5'){
+            // pass index1,2,3, register
+        }else{
+            // pass index1,2,3, register
+        }
+    }
+
+
+    return 0;
+}
+
 
 
 
@@ -265,7 +303,9 @@ int CPU  ::decode() {
 void Machine ::clear( string option) {
 
     if(option=="1"){
+
         cpu.clear();
+
     }else if( option=="2"){
 
         //clean memory

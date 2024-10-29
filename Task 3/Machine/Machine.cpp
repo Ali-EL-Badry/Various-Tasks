@@ -11,21 +11,27 @@ void Machine ::clear( string option) {
 
     }else if( option=="2"){
 
-        //clean memory
+        memory.clear();
 
     }else{
 
         cpu.clear();
-        //clean memory
+        memory.clear();
     }
 
 }
+
 void Machine::load_file(bool option, string name) {
 
-    ofstream file(name);
+    ifstream file(name);
 
     if(option==0){//whole
+        string s;
 
+        while (!file.eof()){
+            file>>s;
+            memory.set_nstrctions();
+        }
 
 
 
@@ -37,5 +43,16 @@ void Machine::load_file(bool option, string name) {
     }
 
 
+}
+void Machine ::show_machine() {
+    cout<<"Machine looks like : \n\n";
+
+    //cpu
+    cpu.show_cpu();
+
+    //memory
+    memory.print();
+
+    cout<<"\n\n\n";
 
 }

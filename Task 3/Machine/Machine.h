@@ -20,7 +20,7 @@ private:
 
 public:
 
-    // show options to clear //++
+    // show options to clear
     void clear(string option );// 1. if to clear registers (of course will be the cpu too),2. clean memo ,3. clean all
 
 //0 -> all , 1 -> step by step
@@ -28,7 +28,7 @@ public:
 
     // weather the whole thing or
     // step by step
-    void show_machine(bool option);
+    void show_machine(/*bool option*/);
 
 };
 

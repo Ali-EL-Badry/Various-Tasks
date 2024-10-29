@@ -30,6 +30,11 @@ void Register ::print_rgstr()
 {
     for (int i = 0; i < 16; ++i)
     {
+        if (i<10){
+            cout<<"R"<<i<<" : ";
+        }else{
+            cout<<"R"<<char('A'+(i%10))<<" : ";
+        }
         cout<<rgstr[i]<<endl;
     }
 }

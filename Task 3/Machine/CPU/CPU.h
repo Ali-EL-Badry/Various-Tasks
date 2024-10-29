@@ -27,7 +27,7 @@ private:
             ,{"2"," LOAD the register R with the bit pattern XY."},
             {"3"," STORE the bit pattern found in register R in the memory cell whose address is XY."},
              {"33","STORE to location 00,which is a memory mapping for the screen.Writing to 00 is writing to screen."}
-            ,{"4"," MOVE the bit pattern found in register R to register S."}
+            ,{"4"," MOVE the bit pattern found in register R to register S."},
             };
     bool valid(string IR );
 

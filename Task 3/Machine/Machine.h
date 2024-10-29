@@ -24,11 +24,13 @@ public:
     void clear(string option );// 1. if to clear registers (of course will be the cpu too),2. clean memo ,3. clean all
 
 //0 -> all , 1 -> step by step
-    void load_file(bool option,string name);//add c000 if not found in the end of the file
+    void load_file(bool option,string name, string place);//add c000 if not found in the end of the file
 
     // weather the whole thing or
     // step by step
     void show_machine(/*bool option*/);
+
+    void load_instruction (string place , string instruction );
 
 };
 

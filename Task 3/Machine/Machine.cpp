@@ -21,16 +21,20 @@ void Machine ::clear( string option) {
 
 }
 
-void Machine::load_file(bool option, string name) {
+void Machine::load_file(bool option, string name, string place) {
 
     ifstream file(name);
 
     if(option==0){//whole
         string s;
-
+        bool first =true;
         while (!file.eof()){
             file>>s;
-            memory.set_nstrctions();
+            string part1 ;part1=s[0]+s[1];
+            string part2 ;part2=s[0]+s[1];
+            if(){
+                memory.set_nstrctions();
+            }
         }
 
 

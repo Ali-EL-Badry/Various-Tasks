@@ -16,7 +16,7 @@ private:
      *
      * @return The decimal number after being converted
      */
-    static string hexToDec(const string& number);
+     string hexToDec(const string& number);
 
 public:
     /**

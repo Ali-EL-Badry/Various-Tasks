@@ -42,6 +42,7 @@ string& Memory::get_index(int row ,int coloumn)
 }
 
 void Memory:: print(){
+    cout<<"Memory looks like : \n\n";
     cout<<'.'<<' ';
     for (int i = 0; i <= 15; ++i) {
         if(i<=9){ cout << i << "   "; }

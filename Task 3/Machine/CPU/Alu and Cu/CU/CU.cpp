@@ -1,2 +1,103 @@
-
 #include "CU.h"
+#include <cmath>
+#include <iostream>
+
+int CU::hexToDec(const char& number){
+    if(number - '0' < 10)
+        return  number - '0';
+    return  number - 'A' + 10;
+}
+
+void CU::loadAtAdress(Memory& memory, Register& reg, const char &addressRegister ,const string& addressMemory){
+    int regAddress = hexToDec(addressRegister);
+    int memmoryAddressRow = hexToDec(addressMemory[0]);
+    int memmoryAddressColmn = hexToDec(addressMemory[1]);
+
+    string bitPattern = memory.get_index(memmoryAddressRow,memmoryAddressColmn);
+
+    if(!bitPattern.empty())
+        reg.set_rgstr(regAddress,bitPattern);
+}
+
+void CU::loadwith(Register& reg, const char& address, string& value){
+    int regAddress = hexToDec(address);
+
+    reg.set_rgstr(regAddress, value);
+}
+
+void CU::storeLocation(Memory& memory, Register& reg, const char& addressRegister, const string& addressMemory){
+    int regAddress = hexToDec(addressRegister);
+    int memmoryAddressRow =  hexToDec(addressMemory[0]);
+    int memmoryAddressColmn =  hexToDec(addressMemory[1]);
+
+
+    string bitPattern = reg.get_rgstr(regAddress);
+    if(!bitPattern.empty())
+        memory.set_nstrctions(memmoryAddressRow, memmoryAddressColmn, bitPattern);
+}
+
+void CU::storeScreen(Register& reg, const char& addressRegister){
+    int regAddress = hexToDec(addressRegister);
+    string bitPattern = reg.get_rgstr(regAddress);
+
+    cout << (bitPattern.empty() ? "This Register is empty." : bitPattern) << "\n";
+}
+
+void CU::moveBits(Register& reg, const char& firstRegisterAddress, const char& secondRegisterAddress){
+    int _1stRegAddress_ = hexToDec(firstRegisterAddress);
+    int _2ndRegAddress_ = hexToDec(secondRegisterAddress);
+
+    string bitPattern = reg.get_rgstr(_1stRegAddress_);
+
+    if(!bitPattern.empty())
+        reg.set_rgstr(_2ndRegAddress_, bitPattern);
+}
+
+void CU::jumpToEqualLocation(Register& reg, const string& Address, string& currentPC, int& row, int& column){
+    int registerAddress = hexToDec(Address[0]);
+    int memoryRow = hexToDec(Address[1]);
+    int memoryColumn = hexToDec(Address[2]);
+
+    string registerContent = reg.get_rgstr(registerAddress);
+
+    if(registerContent == reg.get_rgstr(0)){
+        string newMemoryAddress = Address.substr(1,2);
+
+        currentPC = newMemoryAddress;
+        row = memoryRow; column = memoryColumn;
+    }
+}
+
+void CU::jumpToSmallerLocation(Register& reg, const string& Address, string& currentPC, int& row, int& column){
+    int registerAddress = hexToDec(Address[0]);
+    int memoryRow = hexToDec(Address[1]);
+    int memoryColumn = hexToDec(Address[2]);
+
+    string registerContent = reg.get_rgstr(registerAddress);
+    string registerContent0 = reg.get_rgstr(0);
+
+    int _1stRegisterValue_ = 0,_2ndRegisterValue_ = 0, base = 1;
+
+    for(int i = registerContent.size()-1;i >= 0;i--){
+        int value = hexToDec(registerContent[i]) * base;
+        _1stRegisterValue_ += value;
+        base *= 16;
+    }
+
+    base = 1;
+    for(int i = registerContent0.size()-1;i >= 0;i--){
+        int value= hexToDec(registerContent0[i]) * base;
+        _2ndRegisterValue_ += value;
+        base *= 16;
+    }
+
+    if(_1stRegisterValue_ > _2ndRegisterValue_){
+        string newMemoryAddress = Address.substr(1,2);
+
+        currentPC = newMemoryAddress;
+        row = memoryRow; column = memoryColumn;
+    }
+}
+
+
+

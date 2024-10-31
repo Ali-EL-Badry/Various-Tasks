@@ -6,8 +6,7 @@
 using namespace std;
 
 class Alu {
- 
-public:
+private:
     /**
      * @brief it change the decimal number to hexadecimal numbers.
      *
@@ -26,30 +25,60 @@ public:
      */
     static string hexToDec(const string& number);
 
+public:
     /**
      * @brief add the bit patterns in registers S and T as though they were two’s complement representations
      *        and leave the result in register R.
      *
-     * @param reg The register that the addition will happen and stored in
-     * @param firstRegIndex the index of the Register S
-     * @param secondRegIndex the index of the Register T
-     * @param thirdRegIndex the index of the Register R
-     *
+     * @param reg The register that the addition will happen and stored in.
+     * @param index the index of three Registers where the operation take place.
      */
-    static void addTwosComplement(Register &reg, const char &firstRegIndex, const char &secondRegIndex, const char &thirdRegIndex);
+    static void addTwosComplement(Register &reg, const string &index);
 
     /**
-    * @brief add the bit patterns in registers S and T as thoughthey represented values in floating-point notation
-    *        and leave the result in register R.
-    *
-    * @param reg The register that the addition will happen and stored in
-    * @param firstRegIndex the index of the Register S
-    * @param secondRegIndex the index of the Register T
-    * @param thirdRegIndex the index of the Register R
-    *
-    */
-    static void addFloatingPoint(Register &reg, const char &firstRegIndex, const char &secondRegIndex, const char &thirdRegIndex);
+     * @brief add the bit patterns in registers S and T as thoughthey represented values in floating-point notation
+     *        and leave the result in register R.
+     *
+     * @param reg The register that the addition will happen and stored in.
+     * @param index The index of three Registers where the operation take place.
+     */
+    static void addFloatingPoint(Register &reg, const string &index);
 
+    /**
+     * @brief it make the bitwise or operation on the contentin the two registers S and T and store result in R
+     *
+     * @param reg The register that the addition will happen and stored in.
+     * @param index The index of three Registers where the operation take place.
+     * 
+     */
+    static void bitwiseOrRegisters(Register &reg, const string &index);
+
+    /**
+     * @brief it make the bitwise and operation on the contentin the two registers S and T and store result in R.
+     *
+     * @param reg The register that the addition will happen and stored in.
+     * @param index The index of three Registers where the operation take place.
+     * 
+     */
+    static void bitwiseAndRegisters(Register &reg, const string &index);
+ 
+    /**
+     * @brief it make the bitwise xor operation on the contentin the two registers S and T and store result in R.
+     *
+     * @param reg The register that the addition will happen and stored in.
+     * @param index The index of three Registers where the operation take place.
+     * 
+     */
+    static void bitwiseXorRegisters(Register &reg, const string &index);
+
+    /**
+     * @brief it rotatae the value of Register R by X times.
+     *
+     * @param reg The register that the addition will happen and stored in.
+     * @param index The index of three Registers where the operation take place.
+     * 
+     */
+    static void rotateContentRegister(Register &reg, const string &index);
 
 };
 

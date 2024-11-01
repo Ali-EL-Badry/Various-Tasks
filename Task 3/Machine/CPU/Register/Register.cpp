@@ -35,7 +35,9 @@ void Register ::print_rgstr()
         }else{
             cout<<"R"<<char('A'+(i%10))<<" : ";
         }
-        cout<<rgstr[i]<<endl;
+
+        if(!rgstr[i].empty()) { cout << rgstr[i] << endl; }
+        else {cout<<"00"<<'\n';}
     }
 }
 

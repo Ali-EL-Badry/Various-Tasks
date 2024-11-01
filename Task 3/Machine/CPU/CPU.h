@@ -33,14 +33,15 @@ private:
 
 public:
     // show the PC ,IR after we finish
-    void fetch(int &row,int &column,const vector<vector<string>>&memo );
+    bool fetch(int &row,int &column,const vector<vector<string>>&memo );
 
     //explain the decode or the meaning of the instruction means what by the cout
     // 1 -> cu // 2->alu // 3->c000
-    int decode();//done
+    int decode(bool option);//done // 0 --> step by step
+    // 1--> whole program
 
     //execute then show memo, registers
-    bool excute(int Case,Memory &memo);//we have access to the registers
+    bool excute(int& row,int& column,int Case,Memory &memo);//we have access to the registers
     //if zero continue , else stop
 
     void clear();//done

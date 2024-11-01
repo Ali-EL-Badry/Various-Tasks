@@ -16,7 +16,7 @@ string Alu::decToHex(const string& number){
 
         Number /= 16;
     }
-    
+
     return result;
 }
 

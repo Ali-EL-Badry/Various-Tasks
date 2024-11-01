@@ -61,7 +61,7 @@ public:
      * 
      */
     static void bitwiseAndRegisters(Register &reg, const string &index);
- 
+
     /**
      * @brief it make the bitwise xor operation on the contentin the two registers S and T and store result in R.
      *

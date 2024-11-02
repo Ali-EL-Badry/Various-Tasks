@@ -1,98 +1,150 @@
 #include "Alu.h"
-
 #include <cmath>
 
-string Alu::decToHex(const string& number){
-    long long Number = stoll(number);
+
+int Alu::hexToDec(const char& number){
+    if(number - '0' < 10)
+        return  number - '0';
+    return  number - 'A' + 10;
+}
+
+string Alu::decToHex( int number){
+    if (number == 0) return "0";
     string result;
 
-    while(Number != 0){
-        long long remainder = Number % 16;
+    while (number != 0) {
+        long long remainder = number % 16;
 
         if (remainder < 10)
-            result = to_string('0' + remainder) + result; // 0-9
+            result = char('0' + remainder) + result;
         else
-            result = to_string('A' + (remainder - 10))+ result; // A-F
+            result = char('A' + (remainder - 10)) + result;
 
-        Number /= 16;
+        number /= 16;
     }
 
     return result;
 }
 
-string Alu::hexToDec(const string& number){
-    long long result = 0;
 
-    for(int i =number.size()-1 ; i >= 0 ; i--){
-        if(number[i] - '0' < 10)
-            result += (number[i] - '0')* pow(16,number.size()-1-i);
-        else
-            result += (number[i] - 'A' + 10)* pow(16,number.size()-1-i);
+string Alu::decToBinary(int number){
+    string result;
+    for(int i = 0 ; i < 4; i++){
+        result = to_string(number % 2) + result;
+        number /= 2;
     }
-
-    return to_string(result);
+    return result;
 }
 
-void Alu::addTwosComplement(Register& reg, const string& index)
-{
 
+string Alu::hexToBinary(const string& number){
+    string result;
+    for(int i = 0 ; i < number.length() ;i++){
+        int temp = hexToDec(number[i]);
+        result += decToBinary(temp);
+    }
+    return result;
 }
 
-void Alu::addFloatingPoint(Register& reg, const string& index)
-{
+int Alu::twosComplementToDec(const string& number){
+    string binaryNumber = hexToBinary(number);
+    int value = 0, length = binaryNumber.length();
 
+    for (int i = 0; i < length; i++)
+        value = value * 2 + (binaryNumber[i] - '0');
+
+    value -= (binaryNumber[0]-'0') * int(pow(2, length));
+
+    return value;
 }
 
-void Alu::bitwiseOrRegisters(Register& reg, const string& index)
-{
-    string R1,R2,R3;
-   R1=index[0];
-   R2=index[1];
-   R3=index[2];
+void Alu::addTwosComplement(Register& reg, const string& index){
+    int register1 = hexToDec(index[0]);
+    int register2 = hexToDec(index[1]);
+    int register3 = hexToDec(index[2]);
 
-   R1= hexToDec(R1);
-   R2= hexToDec(R2);
-   R3= hexToDec(R3);
+    string _register2Value_ = reg.get_rgstr(register2);
+    string _register3Value_ = reg.get_rgstr(register3);
 
-   string answer=to_string(  stoi( reg.get_rgstr(stoi(R2) ) )  |  stoi( reg.get_rgstr( stoi(R3) ) )  );
+    int _valueRegister2_ = twosComplementToDec(_register2Value_);
+    int _valueRegister3_ = twosComplementToDec(_register3Value_);
 
-   reg.set_rgstr(stoi(R1), answer);
+    string result = decToHex(_valueRegister2_ + _valueRegister3_);
+    reg.set_rgstr(register1, result);
+}
+////////////////////////////////////////////////////////////////////////
+void Alu::addFloatingPoint(Register& reg, const string& index){
+    int register1 = hexToDec(index[0]);
+    int register2 = hexToDec(index[1]);
+    int register3 = hexToDec(index[2]);
 
+    string _register2Value_ = reg.get_rgstr(register2);
+    string _register3Value_ = reg.get_rgstr(register3);
+}
+////////////////////////////////////////////////////////////////////////
+
+void Alu::bitwiseOrRegisters(Register& reg, const string& index){
+    int register1 = hexToDec(index[0]);
+    int register2 = hexToDec(index[1]);
+    int register3 = hexToDec(index[2]);
+
+    string _register2Value_ = reg.get_rgstr(register2);
+    string _register3Value_ = reg.get_rgstr(register3);
+
+    int _valueRegister2_ = 0, _valueRegister3_ = 0;
+
+    for (char ch : _register2Value_)
+        _valueRegister2_ = _valueRegister2_ * 16 + hexToDec(ch);
+
+    for (char ch : _register3Value_)
+        _valueRegister3_ = _valueRegister3_ * 16 + hexToDec(ch);
+
+    string result = decToHex(_valueRegister2_ | _valueRegister3_);
+    reg.set_rgstr(register1, result);
 }
 
-void Alu::bitwiseAndRegisters(Register& reg, const string& index)
-{
-    string R1,R2,R3;
-    R1=index[0];
-    R2=index[1];
-    R3=index[2];
+void Alu::bitwiseAndRegisters(Register& reg, const string& index){
+    int register1 = hexToDec(index[0]);
+    int register2 = hexToDec(index[1]);
+    int register3 = hexToDec(index[2]);
 
-    R1= hexToDec(R1);
-    R2= hexToDec(R2);
-    R3= hexToDec(R3);
+    string _register2Value_ = reg.get_rgstr(register2);
+    string _register3Value_ = reg.get_rgstr(register3);
 
-    string answer=to_string(  stoi( reg.get_rgstr(stoi(R2) ) )  &  stoi( reg.get_rgstr( stoi(R3) ) )  );
+    int _valueRegister2_ = 0, _valueRegister3_ = 0;
 
-    reg.set_rgstr(stoi(R1), answer);
+    for (char ch : _register2Value_)
+        _valueRegister2_ = _valueRegister2_ * 16 + hexToDec(ch);
+
+    for (char ch : _register3Value_)
+        _valueRegister3_ = _valueRegister3_ * 16 + hexToDec(ch);
+
+    string result = decToHex(_valueRegister2_ & _valueRegister3_);
+    reg.set_rgstr(register1, result);
 }
 
-void Alu::bitwiseXorRegisters(Register& reg, const string& index)
-{
-    string R1,R2,R3;
-    R1=index[0];
-    R2=index[1];
-    R3=index[2];
+void Alu::bitwiseXorRegisters(Register& reg, const string& index){
+    int register1 = hexToDec(index[0]);
+    int register2 = hexToDec(index[1]);
+    int register3 = hexToDec(index[2]);
 
-    R1= hexToDec(R1);
-    R2= hexToDec(R2);
-    R3= hexToDec(R3);
+    string _register2Value_ = reg.get_rgstr(register2);
+    string _register3Value_ = reg.get_rgstr(register3);
 
-    string answer=to_string(  stoi( reg.get_rgstr(stoi(R2) ) )  ^  stoi( reg.get_rgstr( stoi(R3) ) )  );
+    int _valueRegister2_ = 0, _valueRegister3_ = 0;
 
-    reg.set_rgstr(stoi(R1), answer);
+    for (char ch : _register2Value_)
+        _valueRegister2_ = _valueRegister2_ * 16 + hexToDec(ch);
+
+    for (char ch : _register3Value_)
+        _valueRegister3_ = _valueRegister3_ * 16 + hexToDec(ch);
+
+    string result = decToHex(_valueRegister2_ & _valueRegister3_);
+    reg.set_rgstr(register1, result);
+
 }
+/////////////////////////////////////////////////////////////////////////
+void Alu::rotateContentRegister(Register& reg, const string& index){
 
-void Alu::rotateContentRegister(Register& reg, const string& index)
-{
-    
 }
+////////////////////////////////////////////////////////////////////////

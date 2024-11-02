@@ -70,6 +70,81 @@ int Alu::binToDec(const string &binaryStr) {
     return decimal;
 }
 
+double Alu::binToFloat(const string& binaryNumber){
+    int sign = binaryNumber[0] - '0';
+    string exponent = binaryNumber.substr(1,3);
+    string mantissa = binaryNumber.substr(4);
+
+    int exponentValue = binToDec(exponent) - 3;
+    double mantissaValue = 1.0;
+
+    for (size_t i = 0; i < mantissa.size(); ++i){
+        if (mantissa[i] == '1')
+            mantissaValue += pow(2, -(i + 1));
+    }
+
+    double value = mantissaValue * pow(-1,sign) * pow(2, exponentValue);
+    return value;
+}
+
+string Alu::floatToBin(double& floatValue){
+    string result = (floatValue < 0 ? "1" : "0");
+    floatValue = abs(floatValue);
+
+    // Change number to binary
+    string binaryValue = decToBinary(int(floatValue)) + ".";
+    double fractionValue = floatValue - int(floatValue);
+    while(fractionValue != 0){
+        fractionValue *= 2;
+
+        if(fractionValue >= 1){
+            fractionValue -= 1;
+            binaryValue += "1";
+        }
+        else
+            binaryValue += "0";
+    }
+
+    // Get the value of exponent
+    bool check = false;int unbiasedExponent = 0;
+    for(int i = 0 ; i < binaryValue.length() ; i++){
+        if(binaryValue[i] == '1' && !check){
+            check = true;
+            continue;
+        }
+
+        if(binaryValue[i] == '.')
+            break;
+
+        if(check)
+            unbiasedExponent++;
+    }
+    int Exponent = unbiasedExponent + 3;
+    result += decToBinary(Exponent);
+
+    // get the mantisa part
+    check = false; int counter = 0;
+    for(int i = 0 ; i < binaryValue.length() && counter < 4; i++){
+        if(binaryValue[i] == '1' && !check){
+            check = true;
+            continue;
+        }
+
+        if(binaryValue[i] == '.')
+            continue;
+
+        if(check){
+            result += binaryValue[i];
+            counter ++;
+        }
+    }
+    for(int i = counter ; i < 4 ; i++)
+        result += "0";
+
+    return result;
+}
+
+
 void Alu::addTwosComplement(Register& reg, const string& index){
     int register1 = hexToDec(index[0]);
     int register2 = hexToDec(index[1]);
@@ -85,7 +160,7 @@ void Alu::addTwosComplement(Register& reg, const string& index){
     reg.set_rgstr(register1, result);
 }
 
-////////////////////////////////////////////////////////////////////////
+
 void Alu::addFloatingPoint(Register& reg, const string& index){
     int register1 = hexToDec(index[0]);
     int register2 = hexToDec(index[1]);
@@ -94,8 +169,14 @@ void Alu::addFloatingPoint(Register& reg, const string& index){
     string _register2Value_ = reg.get_rgstr(register2);
     string _register3Value_ = reg.get_rgstr(register3);
 
+    double _valueRegister2_ = binToFloat(hexToBinary(_register2Value_));
+    double _valueRegister3_ = binToFloat(hexToBinary(_register3Value_));
+    double sum = _valueRegister2_ + _valueRegister3_;
+
+    string result = decToHex(binToDec(floatToBin(sum))) ;
+    reg.set_rgstr(register1, result);
 }
-////////////////////////////////////////////////////////////////////////
+
 
 void Alu::bitwiseOrRegisters(Register& reg, const string& index){
     int register1 = hexToDec(index[0]);

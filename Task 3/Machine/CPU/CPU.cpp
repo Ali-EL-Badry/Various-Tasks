@@ -1,22 +1,28 @@
 #include "CPU.h"
 
 
-
+//done
 void CPU::clear() {
     IR.clear();
     PC.clear();
     registers.clear();//clean registers
 }
 
+//done ~
 bool CPU ::fetch(int& row,int& column,const vector<vector<string>>&memo) {
-    //again:
+
     string ir,pc;
-    if(!(row>=16||column>=16)){ ir += memo[row][column]; }
-    else{return false;}
+
+    if(!(row>=16||column>=16)) { ir += memo[row][column]; }
+    else {return false;}
+
     if(column+1<16){
+
         column++;
         ir+=memo[row][column];
+
     }else{
+
         row++;
         if(row<16)
         {
@@ -25,59 +31,68 @@ bool CPU ::fetch(int& row,int& column,const vector<vector<string>>&memo) {
         }else{
             return false;
         }
+
     }
 
-    //for pc
-    if(column+1<16){column++;}
+   //pc
+
+    string rows,columns;
+    if(column+1<16){
+
+
+
+        if(row>9){ rows='A'+row-10;}
+        else{ rows= to_string(row);}
+
+        if(column+1>9){columns='A'+column+1-10;}
+        else{columns= to_string(column+1);}
+
+        PC=rows+columns;
+        IR=ir;
+        return true;
+    }
     else{
-        row++;
-        if(row<16)
+
+        if(row+1<16)
         {
-            column=0;
+            if(row+1>9){ rows='A'+row+1-10;}
+            else{ rows= to_string(row+1);}
+
+            if(column>9){columns='A'+column-10;}
+            else{columns= to_string(column);}
+
+
+            PC=rows+columns;
+            IR=ir;
+            return true;
 
         }else{
 
-            if(!valid(ir))
-                return false;
-            else{
-                IR=ir;
-                //pc?!
-                PC="FF";
-                return true;
-            }
 
-           // return true;
+            IR=ir;
+
+            PC="FF";
+            return true;
+
         }
     }
 
 
-    string rows,columns;
 
-    if(row>9){ rows='A'+row-10;}
-    else{ rows= to_string(row);}
 
-    if(column>9){columns='A'+column-10;}
-    else{columns= to_string(column);}
 
-    pc= rows+ columns;
 
-    if(!valid(ir)){
-        /*goto again;*/
-        return false;
-    }else{
-        IR=ir;
-        PC=pc;
-    }
-    return true;
 }
 
+
+//done
 bool CPU ::valid(std::string ir) {
 
     string part;
     if(ir.size()!=4)
         return false;
 
-    if(ir[0]=='1'||ir[0]=='2'||ir[0]=='3'||ir[0]=='B'||ir[0]=='5'||ir[0]=='6'){
+    if(ir[0]=='1'||ir[0]=='2'||ir[0]=='3'||ir[0]=='B'||ir[0]=='5'||ir[0]=='6'||ir[0]=='D'||ir[0]=='9'||ir[0]=='8'||ir[0]=='7'){
 
         part=ir[1]+ir[2]+ir[3];
         if(!regex_match( part, regex(".[0-9A-F]") ) ){
@@ -98,6 +113,14 @@ bool CPU ::valid(std::string ir) {
             return false;
         }
 
+    }else if(ir[0]=='A'){
+        if(ir[2]!='0')
+            return false;
+        part=ir[1]+ir[3];
+        if(!regex_match( part, regex(".[0-9A-F]") ) ){
+            return false;
+        }
+
     }else
         return false;
 
@@ -105,16 +128,10 @@ bool CPU ::valid(std::string ir) {
     return true;
 }
 
+//done
 int CPU  ::decode(bool option) {
 
-    if(IR[0]=='1'||IR[0]=='2'||IR[0]=='3'||IR[0]=='4'||IR[0]=='B'){
-        return 1;
-    }
-    else if( IR[0]=='5'||IR[0]=='6'){
-        return 2;
-    }else if(IR=="C000"){
-        return 3;
-    }
+
     if(!option){// 0 --> step by step // 1--> whole program
 
         cout<<"The meaning of the instruction is : \n\n";
@@ -131,8 +148,21 @@ int CPU  ::decode(bool option) {
     }
 
 
+    if(IR[0]=='1'||IR[0]=='2'||IR[0]=='3'||IR[0]=='4'||IR[0]=='B'||IR[0]=='D'){
+        return 1;
+    }
+    else if( IR[0]=='5'||IR[0]=='6'||IR[0]=='7'||IR[0]=='8'||IR[0]=='9'||IR[0]=='A'){
+        return 2;
+    }else if(IR=="C000"){
+        return 3;
+    }
+
+
+
+
 }
 
+//done
 bool CPU::excute(int& row,int& column,int Case, Memory &memo) {
 
     if(Case==3){//halt
@@ -164,20 +194,32 @@ bool CPU::excute(int& row,int& column,int Case, Memory &memo) {
 
         }else if(IR[0]=='4'){
             CU:: moveBits(registers, translation[1], translation[2]);
-        }else{
+        }else if(IR[0]=='B'){
+
              s=translation[0]+translation[1]+translation[2];
            CU:: jumpToEqualLocation(registers , s, PC ,row,column);
 
+        }else{
+            s=translation[0]+translation[1]+translation[2];
+            CU::jumpToSmallerLocation(registers,s,PC,row,column);
         }
 
     }
     else{
 
-
+        s=translation[0]+translation[1]+translation[2];
         if(IR[0]=='5'){
            Alu:: addTwosComplement(registers, s);
-        }else{
+        }else if(IR[0]=='6'){
             Alu :: addFloatingPoint(registers, s);
+        }else if(IR[0]=='7'){
+            Alu::bitwiseOrRegisters(registers,s);
+        }else if(IR[0]=='8'){
+            Alu::bitwiseAndRegisters(registers,s);
+        }else if(IR[0]=='9'){
+            Alu::bitwiseXorRegisters(registers,s);
+        }else{
+            Alu::rotateContentRegister(registers,s);
         }
 
     }
@@ -186,14 +228,17 @@ bool CPU::excute(int& row,int& column,int Case, Memory &memo) {
     return 0;
 }
 
+//done
 string CPU :: getter_PC(){
     return PC;
 }
 
+//done
 string  CPU:: getter_IR(){
     return IR;
 }
 
+//done
 void CPU ::show_cpu() {
     cout << "The PC : ";
     if(!PC.empty()){ cout<<PC<<'\n'; }

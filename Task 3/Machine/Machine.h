@@ -18,21 +18,22 @@ private:
     CPU cpu;
     Memory memory;
 
+
 public:
 
     // show options to clear
     void clear(string option );// 1. if to clear registers (of course will be the cpu too),2. clean memo ,3. clean all
 
 //0 -> all , 1 -> step by step
-    void load_file(string name, string place);//add c000 if not found in the end of the file
+    bool load_file(string name, string place);//add c000 if not found in the end of the file
 
     // weather the whole thing or
     // step by step
     void show_machine();
 
-    void read_memory(bool option);// 0 -> whole , 1 -> step by step
+    void read_memory(bool option);// 0 -> step by step , 1 -> whole
 
-    void load_instruction (bool first ,string place , string instruction );
+    void load_instruction (string place  );
 
 };
 

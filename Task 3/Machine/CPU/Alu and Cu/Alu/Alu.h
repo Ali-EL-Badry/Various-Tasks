@@ -8,24 +8,52 @@ using namespace std;
 class Alu {
 private:
     /**
-     * @brief it change the decimal number to hexadecimal numbers.
-     *
-     * @param number the number in its decimal stat.
-     *
-     * @return  number in the hexadecimal stat.
-     */
-    static string decToHex(const string& number);
-
-    /**
      * @brief it change the hexadecimal number to decimal numbers.
      *
      * @param number the number in its Hexadecimal stat.
      *
      * @return  number in the Decimal stat.
      */
-    static string hexToDec(const string& number);
+    static int hexToDec(const char& number);
+
+    /**
+     * @brief it change the decimal number to hexadecimal numbers.
+     *
+     * @param number the number in its decimal stat.
+     *
+     * @return  number in the hexadecimal stat.
+     */
+    static string decToHex(int number);
+
+     /**
+      * @brief  Convert decimal number to binary number
+      *
+      * @param  number The decimal number
+      *
+      * @return The binary number after being converted
+      */
+     static string decToBinary(int number);
+
+     /**
+      * @brief  Convert hexadecimal number to binary number
+      *
+      * @param  number The hexadecimal number
+      *
+      * @return The binary number after being converted
+      */
+     static string hexToBinary(const string& number);
+
+     /**
+      * @brief  Convert Hexadecimal twos complement number to Decimal number
+      *
+      * @param  number The Hexadecimal twos complement number
+      *
+      * @return The decimal number after being converted
+      */
+     static int twosComplementToDec(const string& number);
 
 public:
+
     /**
      * @brief add the bit patterns in registers S and T as though they were two’s complement representations
      *        and leave the result in register R.
@@ -49,7 +77,7 @@ public:
      *
      * @param reg The register that the addition will happen and stored in.
      * @param index The index of three Registers where the operation take place.
-     * 
+     *
      */
     static void bitwiseOrRegisters(Register &reg, const string &index);
 
@@ -58,7 +86,7 @@ public:
      *
      * @param reg The register that the addition will happen and stored in.
      * @param index The index of three Registers where the operation take place.
-     * 
+     *
      */
     static void bitwiseAndRegisters(Register &reg, const string &index);
 
@@ -67,7 +95,7 @@ public:
      *
      * @param reg The register that the addition will happen and stored in.
      * @param index The index of three Registers where the operation take place.
-     * 
+     *
      */
     static void bitwiseXorRegisters(Register &reg, const string &index);
 
@@ -76,7 +104,7 @@ public:
      *
      * @param reg The register that the addition will happen and stored in.
      * @param index The index of three Registers where the operation take place.
-     * 
+     *
      */
     static void rotateContentRegister(Register &reg, const string &index);
 

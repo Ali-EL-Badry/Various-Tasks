@@ -57,6 +57,18 @@ int Alu::twosComplementToDec(const string& number){
 
     return value;
 }
+int Alu::binToDec(const string &binaryStr) {
+    int decimal = 0;
+    int base = 1;
+
+    for (int i = binaryStr.length() - 1; i >= 0; --i) {
+        int bit = binaryStr[i] - '0';
+        decimal += bit * base;
+        base *= 2;
+    }
+
+    return decimal;
+}
 
 void Alu::addTwosComplement(Register& reg, const string& index){
     int register1 = hexToDec(index[0]);
@@ -72,6 +84,7 @@ void Alu::addTwosComplement(Register& reg, const string& index){
     string result = decToHex(_valueRegister2_ + _valueRegister3_);
     reg.set_rgstr(register1, result);
 }
+
 ////////////////////////////////////////////////////////////////////////
 void Alu::addFloatingPoint(Register& reg, const string& index){
     int register1 = hexToDec(index[0]);
@@ -80,6 +93,7 @@ void Alu::addFloatingPoint(Register& reg, const string& index){
 
     string _register2Value_ = reg.get_rgstr(register2);
     string _register3Value_ = reg.get_rgstr(register3);
+
 }
 ////////////////////////////////////////////////////////////////////////
 
@@ -143,8 +157,20 @@ void Alu::bitwiseXorRegisters(Register& reg, const string& index){
     reg.set_rgstr(register1, result);
 
 }
-/////////////////////////////////////////////////////////////////////////
-void Alu::rotateContentRegister(Register& reg, const string& index){
 
+void Alu::rotateContentRegister(Register& reg, const string& index){
+    int rgster = hexToDec(index[0]);
+    int x = hexToDec(index[2]);
+
+    string registerValue = reg.get_rgstr(rgster);
+    string binaryValue = hexToBinary(registerValue);
+
+    for(int i = 0 ; i < x; i++){
+        binaryValue = binaryValue[7] + binaryValue;
+        binaryValue.pop_back();
+    }
+    int DecValue = binToDec(binaryValue);
+    string hexValue = decToHex(DecValue);
+
+    reg.set_rgstr(rgster,hexValue);
 }
-////////////////////////////////////////////////////////////////////////

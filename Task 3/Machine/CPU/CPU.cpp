@@ -115,13 +115,20 @@ int CPU  ::decode(bool option) {
     }else if(IR=="C000"){
         return 3;
     }
-    if(option){// 0 --> step by step
-        // 1--> whole program
+    if(!option){// 0 --> step by step // 1--> whole program
 
-    }else{
-        
+        cout<<"The meaning of the instruction is : \n\n";
+        if (IR[0] != '3') {
+            cout<<Instructions[IR[0]]<<'\n';
+        }else{
+            if(IR[2]=='0'&&IR[3]=='0'){
+                cout<<Instructions[IR[0]]<<'\n';
+            }else
+                cout<<Instructions['o']<<'\n';
+        }
+        cout<<"\n\n";
+
     }
-
 
 
 }

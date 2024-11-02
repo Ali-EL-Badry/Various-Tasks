@@ -23,12 +23,27 @@ private:
     Register registers;
     Alu alu;
     CU cu ;
-    map<string,string>Instructions{{"1"," LOAD the register R with the bit pattern found in the memory cell whose address is XY."}
-            ,{"2"," LOAD the register R with the bit pattern XY."},
-            {"3"," STORE the bit pattern found in register R in the memory cell whose address is XY."},
-             {"33","STORE to location 00,which is a memory mapping for the screen.Writing to 00 is writing to screen."}
-            ,{"4"," MOVE the bit pattern found in register R to register S."},
-            };
+    map<char,string>Instructions{
+             {'1'," LOAD the register R with the bit pattern found in the memory cell whose address is XY."}
+
+            ,{'2'," LOAD the register R with the bit pattern XY."},
+
+             {'3'," STORE the bit pattern found in register R in the memory cell whose address is XY."},
+
+             {'o',"STORE to location 00,which is a memory mapping for the screen.Writing to 00 is writing to screen."}
+
+            ,{'4'," MOVE the bit pattern found in register R to register S."},
+
+             {'5'," ADD the bit patterns in registers S and T as though they were two’s complement representations and leave the result in register R."}
+
+            ,{'6'," ADD the bit patterns in registers S and T as though they represented values in floating-point notation and leave the floating - point result in register R. "},
+
+             {'B'," JUMP to the instruction located in the memory cell at address XY if the bit pattern in register R is equal to the bit pattern in register number 0.Otherwise,continue with the normal sequence of execution."},
+
+             {'C',"HALT execution."}
+
+    };
+
     bool valid(string IR );
 
 public:

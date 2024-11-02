@@ -1,4 +1,5 @@
 #include "CU.h"
+
 #include <cmath>
 #include <iostream>
 
@@ -6,6 +7,37 @@ int CU::hexToDec(const char& number){
     if(number - '0' < 10)
         return  number - '0';
     return  number - 'A' + 10;
+}
+
+string CU::decToBinary(int number){
+    string result;
+    for(int i = 0 ; i < 4; i++){
+        result = to_string(number % 2) + result;
+        number /= 2;
+    }
+    return result;
+}
+
+
+string CU::hexToBinary(const string& number){
+    string result;
+    for(int i = 0 ; i < number.length() ;i++){
+        int temp = hexToDec(number[i]);
+        result += decToBinary(temp);
+    }
+    return result;
+}
+
+int CU::twosComplementToDec(const string& number){
+    string binaryNumber = hexToBinary(number);
+    int value = 0, length = binaryNumber.length();
+
+    for (int i = 0; i < length; i++)
+        value = value * 2 + (binaryNumber[i] - '0');
+
+    value -= (binaryNumber[0]-'0') * int(pow(2, length));
+
+    return value;
 }
 
 void CU::loadAtAdress(Memory& memory, Register& reg, const char &addressRegister ,const string& addressMemory){
@@ -76,20 +108,8 @@ void CU::jumpToSmallerLocation(Register& reg, const string& Address, string& cur
     string registerContent = reg.get_rgstr(registerAddress);
     string registerContent0 = reg.get_rgstr(0);
 
-    int _1stRegisterValue_ = 0,_2ndRegisterValue_ = 0, base = 1;
-
-    for(int i = registerContent.size()-1;i >= 0;i--){
-        int value = hexToDec(registerContent[i]) * base;
-        _1stRegisterValue_ += value;
-        base *= 16;
-    }
-
-    base = 1;
-    for(int i = registerContent0.size()-1;i >= 0;i--){
-        int value= hexToDec(registerContent0[i]) * base;
-        _2ndRegisterValue_ += value;
-        base *= 16;
-    }
+    int _1stRegisterValue_ = twosComplementToDec(registerContent);
+    int _2ndRegisterValue_ = twosComplementToDec(registerContent0);
 
     if(_1stRegisterValue_ > _2ndRegisterValue_){
         string newMemoryAddress = Address.substr(1,2);
@@ -98,5 +118,6 @@ void CU::jumpToSmallerLocation(Register& reg, const string& Address, string& cur
         row = memoryRow; column = memoryColumn;
     }
 }
+
 
 

@@ -56,11 +56,30 @@ private:
      * @brief Converts a binary string to its decimal representation.
      *
      * @param binaryStr A binary string.
+     *
      * @return int The decimal equivalent of the binary string.
      */
     static int binToDec(const string& binaryStr);
 
-public:
+    /**
+     * @brief Converts a binary string to its float in the form of IEEE of 8 bits representation.
+     *
+     * @param binaryNumber A binary string.
+     *
+     * @return double The IEEE of 8 bits equivalent of the binary string.
+     */
+    static double binToFloat(const string& binaryNumber);
+
+    /**
+     * @brief Convert the float value of IEEE 8-bits to binary value
+     *
+     * @param floatValue A float value of IEEE 8 bits value.
+     *
+     * @return int The decimal equivalent of the binary string.
+     */
+    static string floatToBin(double& floatValue);
+
+  public:
     /**
      * @brief add the bit patterns in registers S and T as though they were two’s complement representations
      *        and leave the result in register R.
@@ -116,6 +135,5 @@ public:
     static void rotateContentRegister(Register &reg, const string &index);
 
 };
-
 
 #endif

@@ -11,17 +11,43 @@ class CU {
 private:
     /**
      * @brief  Convert hexadecimal number to decimal number
-     *
+     * 
      * @param  number The hexadecimal number
-     *
+     * 
      * @return The decimal number after being converted
      */
     static int hexToDec(const char& number);
 
+    /**
+     * @brief  Convert decimal number to binary number
+     *
+     * @param  number The decimal number
+     *
+     * @return The binary number after being converted
+     */
+    static string decToBinary(int number);
+
+     /**
+      * @brief  Convert hexadecimal number to binary number
+      *
+      * @param  number The hexadecimal number
+      *
+      * @return The binary number after being converted
+      */
+    static string hexToBinary(const string& number);
+     /**
+      * @brief  Convert Hexadecimal twos complement number to Decimal number
+      *
+      * @param  number The Hexadecimal twos complement number
+      *
+      * @return The decimal number after being converted
+      */
+    static int twosComplementToDec(const string& number);
+
 public:
     /**
      * @brief load the register R with the bit pattern found in the memory cell whose address is XY.
-     *
+     * 
      * @param addressRegister The address of the register.
      * @param addressMemory The address of the memory.
      * @param memory  The memory which contain the value to be loaded.
@@ -31,7 +57,7 @@ public:
 
     /**
      * @brief load the register R with the bit pattern found in the memory cell whose address is XY.
-     *
+     * 
      * @param reg The register where the value will be loaded.
      * @param address The address of the register.
      * @param value The value to be loaded.
@@ -40,7 +66,7 @@ public:
 
     /**
      * @brief Store the content of register R in the memory cell whose address is XY.
-     *
+     * 
      * @param memory The memory where the content of register will be stored.
      * @param reg The register which contain the value.
      * @param addressRegister The address of the register.
@@ -55,14 +81,14 @@ public:
      * @param addressRegister The address of the register containing the address of the memory location.
      */
     static void storeScreen(Register &reg , const char &addressRegister);
-
+    
     /**
      * @brief  Move the bits of the register R to register S.
      *
      * @param reg The register where the two register belong to.
      * @param firstRegisterAddress The address of the first register.
      * @param secondRegisterAddress The address of the second register
-     *
+     * 
      */
     static void moveBits(Register &reg, const char &firstRegisterAddress, const char &secondRegisterAddress );
 

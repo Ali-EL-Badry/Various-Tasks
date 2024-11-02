@@ -35,24 +35,64 @@ string Alu::hexToDec(const string& number){
 
 void Alu::addTwosComplement(Register& reg, const string& index)
 {
+
 }
 
 void Alu::addFloatingPoint(Register& reg, const string& index)
 {
+
 }
 
 void Alu::bitwiseOrRegisters(Register& reg, const string& index)
 {
+    string R1,R2,R3;
+   R1=index[0];
+   R2=index[1];
+   R3=index[2];
+
+   R1= hexToDec(R1);
+   R2= hexToDec(R2);
+   R3= hexToDec(R3);
+
+   string answer=to_string(  stoi( reg.get_rgstr(stoi(R2) ) )  |  stoi( reg.get_rgstr( stoi(R3) ) )  );
+
+   reg.set_rgstr(stoi(R1), answer);
+
 }
 
 void Alu::bitwiseAndRegisters(Register& reg, const string& index)
 {
+    string R1,R2,R3;
+    R1=index[0];
+    R2=index[1];
+    R3=index[2];
+
+    R1= hexToDec(R1);
+    R2= hexToDec(R2);
+    R3= hexToDec(R3);
+
+    string answer=to_string(  stoi( reg.get_rgstr(stoi(R2) ) )  &  stoi( reg.get_rgstr( stoi(R3) ) )  );
+
+    reg.set_rgstr(stoi(R1), answer);
 }
 
 void Alu::bitwiseXorRegisters(Register& reg, const string& index)
 {
+    string R1,R2,R3;
+    R1=index[0];
+    R2=index[1];
+    R3=index[2];
+
+    R1= hexToDec(R1);
+    R2= hexToDec(R2);
+    R3= hexToDec(R3);
+
+    string answer=to_string(  stoi( reg.get_rgstr(stoi(R2) ) )  ^  stoi( reg.get_rgstr( stoi(R3) ) )  );
+
+    reg.set_rgstr(stoi(R1), answer);
 }
 
 void Alu::rotateContentRegister(Register& reg, const string& index)
 {
+    
 }

@@ -12,11 +12,11 @@ string lower(string s){
 //done
 void Machine ::clear( string option) {
 
-    if(option=="1"){
+    if(option=="2"){
 
         cpu.clear();
 
-    }else if( option=="2"){
+    }else if( option=="1"){
 
         memory.clear();
 
@@ -173,7 +173,7 @@ void Machine:: read_memory(bool option)// 0 -> step by step , 1 -> whole
                     show_machine();
 
                 if(isHalt){
-                    cout<<"\n\n\n ####### The program is done #######  \n\n\n";
+                    cout<<"\n\n\n ####### The program is ended #######  \n\n\n";
                     break;
                 }
 

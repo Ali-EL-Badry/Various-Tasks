@@ -8,6 +8,7 @@ void CPU::clear() {
     registers.clear();//clean registers
 }
 
+
 //done ~
 bool CPU ::fetch(int& row,int& column,const vector<vector<string>>&memo) {
 
@@ -83,7 +84,6 @@ bool CPU ::fetch(int& row,int& column,const vector<vector<string>>&memo) {
 
 
 }
-
 
 //done
 bool CPU ::valid(std::string ir) {

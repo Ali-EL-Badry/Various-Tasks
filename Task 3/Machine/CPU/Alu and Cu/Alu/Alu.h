@@ -7,23 +7,23 @@ using namespace std;
 
 class Alu {
 private:
-   /**
-    * @brief it change the hexadecimal number to decimal numbers.
-    *
-    * @param number the number in its Hexadecimal stat.
-    *
-    * @return  number in the Decimal stat.
-    */
-   static int hexToDec(const char& number);
+    /**
+     * @brief it change the hexadecimal number to decimal numbers.
+     *
+     * @param number the number in its Hexadecimal stat.
+     *
+     * @return  number in the Decimal stat.
+     */
+    static int hexToDec(const char& number);
 
-   /**
-    * @brief it change the decimal number to hexadecimal numbers.
-    *
-    * @param number the number in its decimal stat.
-    *
-    * @return  number in the hexadecimal stat.
-    */
-   static string decToHex(int number);
+    /**
+     * @brief it change the decimal number to hexadecimal numbers.
+     *
+     * @param number the number in its decimal stat.
+     *
+     * @return  number in the hexadecimal stat.
+     */
+    static string decToHex(int number);
 
     /**
      * @brief  Convert decimal number to binary number
@@ -79,7 +79,7 @@ private:
      */
     static string floatToBin(double& floatValue);
 
-  public:
+public:
     /**
      * @brief add the bit patterns in registers S and T as though they were two’s complement representations
      *        and leave the result in register R.

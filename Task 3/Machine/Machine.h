@@ -33,7 +33,7 @@ public:
 
     void read_memory(bool option);// 0 -> step by step , 1 -> whole
 
-    void load_instruction (string place  );
+   // void load_instruction (string place  );
 
 };
 

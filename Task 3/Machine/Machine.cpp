@@ -44,10 +44,11 @@ bool Machine::load_file( string name, string place) {
 
         file >> s;
 
-        if(!cpu.valid(s))
-           /* cout<<"There is wrong instructions input Correct instructions in the file once more again !!\n\n ";*/
+        if(!cpu.valid(s)) {
+            cout<<"The file contains wrong instructions !!\n\nTry again!";
+            memory.clear();
             return false;
-
+        }
 
         string part1; part1 = s[0] + s[1];
         string part2; part2 = s[2] + s[3];
@@ -74,8 +75,11 @@ bool Machine::load_file( string name, string place) {
            if(column+1<16) {
                 column++;
             }else if (column+1>=16) {
-               if(row+1>=16)
-                   break;
+               if(row+1>=16) {
+                  cout<<"The space is insufficient ! Try again !! \n\n";
+                  memory.clear();
+                   return false;
+               }
                row++;
                column = 0;
            }
@@ -89,8 +93,11 @@ bool Machine::load_file( string name, string place) {
             if(column+1<16) {
                 column++;
             }else if (column+1>=16) {
-                if(row+1>=16)
-                    break;
+                if(row+1>=16) {
+                    cout<<"The space is insufficient ! Try again !! \n\n";
+                    memory.clear();
+                    return false;
+                }
                 row++;
                 column = 0;
             }
@@ -101,7 +108,11 @@ bool Machine::load_file( string name, string place) {
                 column++;
             }else if (column+1>=16) {
                 if(row+1>=16)
-                    break;
+                {
+                    cout<<"The space is insufficient ! Try again !! \n\n";
+                    memory.clear();
+                    return false;
+                }
                 row++;
                 column = 0;
             }
@@ -158,7 +169,7 @@ void Machine ::show_machine() {
 void Machine:: read_memory(bool option)// 0 -> step by step , 1 -> whole
 {
     bool isvalid, isHalt= false;int Case;
-    for (int i = 0; i <16 ; ++i) {
+    for (int i = 0; i < 16 ; ++i) {
         for (int j = 0; j < 16; ++j) {
 
             if(!memory.get_index(i,j).empty()){
@@ -191,6 +202,7 @@ void Machine:: read_memory(bool option)// 0 -> step by step , 1 -> whole
 }
 
 //done
+/*
 void Machine:: load_instruction (string place )
 {
 
@@ -315,4 +327,4 @@ void Machine:: load_instruction (string place )
     }
 
 
-}
+}*/

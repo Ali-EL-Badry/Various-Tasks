@@ -12,7 +12,22 @@ void CPU::clear() {
 //done ~
 bool CPU ::fetch(int& row,int& column,const vector<vector<string>>&memo) {
 
-    string ir,pc;
+    string ir,pc,rows,columns;
+
+     if(row>9){
+         rows='A'+row-10;
+     }else{
+         rows=to_string(row);
+     }
+     if(column>9){
+         columns='A'+column-10;
+     }else{
+         columns=to_string(column);
+     }
+
+     if(!(row>=16||column>=16)) { PC = rows+columns; }
+     else {return false;}
+
 
     if(!(row>=16||column>=16)) { ir += memo[row][column]; }
     else {return false;}
@@ -35,48 +50,8 @@ bool CPU ::fetch(int& row,int& column,const vector<vector<string>>&memo) {
 
     }
 
-   //pc
-
-    string rows,columns;
-    if(column+1<16){
-
-
-
-        if(row>9){ rows='A'+row-10;}
-        else{ rows= to_string(row);}
-
-        if(column+1>9){columns='A'+column+1-10;}
-        else{columns= to_string(column+1);}
-
-        PC=rows+columns;
-        IR=ir;
-        return true;
-    }
-    else{
-
-        if(row+1<16)
-        {
-            if(row+1>9){ rows='A'+row+1-10;}
-            else{ rows= to_string(row+1);}
-
-            if(column>9){columns='A'+column-10;}
-            else{columns= to_string(column);}
-
-
-            PC=rows+columns;
-            IR=ir;
-            return true;
-
-        }else{
-
-
-            IR=ir;
-
-            PC="FF";
-            return true;
-
-        }
-    }
+    IR=ir;
+    return true;
 
 
 

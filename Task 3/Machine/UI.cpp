@@ -85,7 +85,7 @@ void UI ::display_clear_menu(Machine& machine) {
 
 void UI:: display_LoadInstruction_menu(Machine &machine){
 
-    cout<<"Choose the method to input the instructions : \n\n";
+   /* cout<<"Choose the method to input the instructions : \n\n";
     cout<<"1.Take from file\n2.Input by yourself\n";
 
     string choice ;cin>>choice;
@@ -95,19 +95,35 @@ void UI:: display_LoadInstruction_menu(Machine &machine){
         cout<<"Choose a valid choice : ";
         cin>>choice;
         cin.ignore();
-    }
+    }*/
+    cout<<"Which option you want to place with in the memory ?\n\n 1.Default value (10)\n2.Choose a certain place \n\n";
+    cout<<"Enter your choice : ";
 
-    cout<<"Enter the place that you would like to start putting in it the memory : ";
-    string place;cin>>place;
+    string choice ;cin>>choice;
     cin.ignore();
 
-    while (place.size()!=2&&!regex_match( place , regex(".[0-9A-F]") )){
-          cout<<"Enter a valid place in memory : ";
-          cin>>place;
-          cin.ignore();
+    while (choice!="1"&&choice!="2") {
+        cout << "Choose a valid choice : ";
+        cin >> choice;
+        cin.ignore();
     }
 
-    if(choice=="1"){
+    string place;
+   if(choice=="2") {
+        cout << "Enter the place that you would like to start putting in  the memory : ";
+
+        cin >> place;
+        cin.ignore();
+
+        while (place == "00" && place.size() != 2 && !regex_match(place, regex(".[0-9A-F]"))) {
+            cout << "Enter a valid place in memory : ";
+            cin >> place;
+            cin.ignore();
+        }
+    }else
+        place="10";
+
+  //  if(choice=="1"){
 
          string name;
 
@@ -120,16 +136,16 @@ void UI:: display_LoadInstruction_menu(Machine &machine){
 
          bool isvalid = machine.load_file(name,place);
          if(!isvalid){
-             cout<<"The file contains wrong instructions !!\n\nTry again!";
              goto repeat;
          }
 
-    }else {
+   // }
+    /*else {
 
-        machine.load_instruction(place);
+       // machine.load_instruction(place);
 
-    }
-    void DisplayWayOfRead ();
+    }*/
+     DisplayWayOfRead (machine);
 
 }
 

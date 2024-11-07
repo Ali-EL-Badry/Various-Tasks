@@ -95,8 +95,14 @@ void CU::jumpToEqualLocation(Register& reg, const string& Address, string& curre
 
     if(registerContent == reg.get_rgstr(0)){
         string newMemoryAddress = Address.substr(1,2);
+         if(memoryColumn==0){
+             row=memoryRow-1;column=15;
+         }else{
 
-        row = memoryRow; column = memoryColumn-1;
+             row = memoryRow; column = memoryColumn-1;
+         }
+
+
     }
 }
 
@@ -113,8 +119,13 @@ void CU::jumpToSmallerLocation(Register& reg, const string& Address, string& cur
 
     if(_1stRegisterValue_ > _2ndRegisterValue_){
         string newMemoryAddress = Address.substr(1,2);
+        if(memoryColumn==0){
+            row=memoryRow-1;column=15;
+        }else{
 
-        row = memoryRow; column = memoryColumn-1;
+            row = memoryRow; column = memoryColumn-1;
+        }
+
     }
 }
 

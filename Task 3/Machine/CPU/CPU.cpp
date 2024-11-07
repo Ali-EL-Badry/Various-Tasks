@@ -5,9 +5,9 @@
 void CPU::clear() {
     IR.clear();
     PC.clear();
-    registers.clear();//clean registers
+    registers.clear();
     screen.clear();
-   // registers.clear();
+
 }
 
 
@@ -65,7 +65,7 @@ bool CPU ::valid(std::string ir) {
 
     if(ir[0]=='1'||ir[0]=='2'||ir[0]=='3'||ir[0]=='B'||ir[0]=='5'||ir[0]=='6'||ir[0]=='D'||ir[0]=='9'||ir[0]=='8'||ir[0]=='7'){
 
-      //  part=ir[1]+ir[2]+ir[3];
+
       part=ir.substr(1,3);
         if(!regex_match( part, regex("[0-9A-F]{3}") ) ){
             return false;
@@ -151,7 +151,7 @@ bool CPU::excute(int& row,int& column,int Case, Memory &memo) {
     if(Case==1){
         //cu
 
-        //
+
         string part1,part2;
         part1=translation[1];part2=translation[2];
         s=part1+part2;

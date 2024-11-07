@@ -4,24 +4,13 @@ void Memory::set_nstrctions(int row,int coloumn ,string &value)
 {
 
 
-  /*  while(cin.fail()||row>=16||row<0)
-    {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin>>row;
-    }
-    while(cin.fail()||coloumn>=16||coloumn<0)
-    {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin>>coloumn;
-    }*/
+
     nstrctions[row][coloumn]=value;
 }
 
 void Memory:: clear()
 {
-    //nstrctions.clear();
+
     for (size_t i = 0; i < 16; ++i) {
         for (size_t j = 0; j < 16; ++j) {
             nstrctions[i][j] = "";
@@ -31,18 +20,7 @@ void Memory:: clear()
 
 string& Memory::get_index(int row ,int coloumn)
 {
-    while(cin.fail()||row>=16||row<0)
-    {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin>>row;
-    }
-    while(cin.fail()||coloumn>=16||coloumn<0)
-    {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin>>coloumn;
-    }
+
     return nstrctions[row][coloumn];
 }
 
@@ -64,8 +42,7 @@ void Memory:: print(){
         }
         cout<<'\n';
     }
-    //test
-   // cout<<"#!\n";
+
 
 }
 

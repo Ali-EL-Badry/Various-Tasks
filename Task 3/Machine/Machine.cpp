@@ -12,27 +12,17 @@ string lower(string s){
 //done
 void Machine ::clear( /*string option*/) {
 
-   /* if(option=="2"){
 
-        cpu.clear();
-
-    }else if( option=="1"){
-
-        memory.clear();
-
-    }else{*/
 
         cpu.clear();
         memory.clear();
-    //}
+
 
 }
 
 //done
 bool Machine::load_file( string name, string place) {
 
-    // we need to validate the place string in the range or not
-    // message to say that is wrong  file instruction and break and enter again by false boolean
 
     ifstream file(name);
     string s;
@@ -50,9 +40,9 @@ bool Machine::load_file( string name, string place) {
             return false;
         }
 
-        string part1;// part1 = s[0] + s[1];
+        string part1;
         part1=s.substr(0,2);
-        string part2; //part2 = s[2] + s[3];
+        string part2;
         part2=s.substr(2,2);
 
         if (first) {

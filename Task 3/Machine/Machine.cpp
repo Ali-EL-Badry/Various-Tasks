@@ -10,9 +10,9 @@ string lower(string s){
 
 
 //done
-void Machine ::clear( string option) {
+void Machine ::clear( /*string option*/) {
 
-    if(option=="2"){
+   /* if(option=="2"){
 
         cpu.clear();
 
@@ -20,11 +20,11 @@ void Machine ::clear( string option) {
 
         memory.clear();
 
-    }else{
+    }else{*/
 
         cpu.clear();
         memory.clear();
-    }
+    //}
 
 }
 
@@ -40,9 +40,9 @@ bool Machine::load_file( string name, string place) {
     int  row,column;
 
 
-    while (!file.eof()) {
+    while ( file >> s) {
 
-        file >> s;
+
 
         if(!cpu.valid(s)) {
             cout<<"The file contains wrong instructions !!\n\nTry again!";
@@ -50,8 +50,10 @@ bool Machine::load_file( string name, string place) {
             return false;
         }
 
-        string part1; part1 = s[0] + s[1];
-        string part2; part2 = s[2] + s[3];
+        string part1;// part1 = s[0] + s[1];
+        part1=s.substr(0,2);
+        string part2; //part2 = s[2] + s[3];
+        part2=s.substr(2,2);
 
         if (first) {
 
@@ -61,13 +63,13 @@ bool Machine::load_file( string name, string place) {
            if(isdigit(place[0])){
                row=stoi(r);
            }else{
-               row='A'-place[0]+10;
+               row=place[0]-'A'+10;
            }
 
            if(isdigit(place[1])){
                 column=stoi(c);
            }else{
-               column='A'-place[1]+10;
+               column=place[1]-'A'+10;
             }
 
            memory.set_nstrctions(row,column,part1);
@@ -201,130 +203,4 @@ void Machine:: read_memory(bool option)// 0 -> step by step , 1 -> whole
 
 }
 
-//done
-/*
-void Machine:: load_instruction (string place )
-{
 
-
-
-     cout<<"When you finish type \" Done \" to stop entering instructions \n\n ";
-
-     string s, previous ;
-     bool first= true;
-     int  row,column;
-
-    while (true){
-        again:
-         cout<<"Enter the instruction :  ";
-        cin>>s;
-        string check = lower(s);
-        if(check !="done")
-            break;
-
-        if(!cpu.valid(s)){
-            cout<<"That instruction is wrong , Enter a correct one !!";
-            goto again;
-        }
-
-        string part1, part2;
-        part1=s[0]+s[1];
-        part2=s[2]+s[3];
-
-        if(first){
-
-            string  r,c;
-            r=place[0];c=place[1];
-
-            if(isdigit(place[0])){
-                row=stoi(r);
-            }else{
-                row='A'-place[0]+10;
-            }
-
-            if(isdigit(place[1])){
-                column=stoi(c);
-            }else{
-                column='A'-place[1]+10;
-            }
-
-            memory.set_nstrctions(row,column,part1);
-
-            if(column+1<16) {
-                column++;
-            }else if (column+1>=16) {
-                if(row+1>=16)
-                    break;
-                row++;
-                column = 0;
-            }
-
-            memory.set_nstrctions(row,column,part2);
-
-            first= false;
-
-
-
-        }
-        else{
-            if(column+1<16) {
-                column++;
-            }else if (column+1>=16) {
-                if(row+1>=16)
-                    break;
-                row++;
-                column = 0;
-            }
-
-            memory.set_nstrctions(row,column,part1);
-
-            if(column+1<16) {
-                column++;
-            }else if (column+1>=16) {
-                if(row+1>=16)
-                    break;
-                row++;
-                column = 0;
-            }
-
-            memory.set_nstrctions(row,column,part2);
-
-
-
-
-
-        }
-
-        previous=s;
-
-    }
-
-    if(previous!="C000"){
-
-        if(!(column+2>=16&&row+1>=16)) {
-
-            if (column + 1 >= 16) {
-                row++;
-                column = 0;
-            } else
-                column++;
-
-            string part = "C0";
-            memory.set_nstrctions(row, column, part);
-
-            if (column + 1 >= 16) {
-                row++;
-                column = 0;
-            } else
-                column++;
-
-            part="00";
-            memory.set_nstrctions(row, column, part);
-        }
-
-
-
-    }
-
-
-}*/

@@ -4,7 +4,7 @@ void Memory::set_nstrctions(int row,int coloumn ,string &value)
 {
 
 
-    while(cin.fail()||row>=16||row<0)
+  /*  while(cin.fail()||row>=16||row<0)
     {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -15,13 +15,18 @@ void Memory::set_nstrctions(int row,int coloumn ,string &value)
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin>>coloumn;
-    }
+    }*/
     nstrctions[row][coloumn]=value;
 }
 
 void Memory:: clear()
 {
-    nstrctions.clear();
+    //nstrctions.clear();
+    for (size_t i = 0; i < 16; ++i) {
+        for (size_t j = 0; j < 16; ++j) {
+            nstrctions[i][j] = "";
+        }
+    }
 }
 
 string& Memory::get_index(int row ,int coloumn)
@@ -59,6 +64,8 @@ void Memory:: print(){
         }
         cout<<'\n';
     }
+    //test
+   // cout<<"#!\n";
 
 }
 

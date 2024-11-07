@@ -68,7 +68,7 @@ void CU::storeLocation(Memory& memory, Register& reg, const char& addressRegiste
         memory.set_nstrctions(memmoryAddressRow, memmoryAddressColmn, bitPattern);
 }
 
-void CU::storeScreen(Register& reg, const char& addressRegister){
+void CU::storeScreen(Register& reg, const char& addressRegister,vector<string>&screen){
     int regAddress = hexToDec(addressRegister);
     string bitPattern = reg.get_rgstr(regAddress);
 

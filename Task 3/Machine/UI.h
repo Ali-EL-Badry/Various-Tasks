@@ -21,7 +21,7 @@ public:
 
  static bool display_main_menu(bool first,Machine& machine);
 
- static void display_clear_menu(Machine & machine);
+ //static void display_clear_menu(Machine & machine);
 
  static void display_LoadInstruction_menu(Machine &machine);
 

@@ -18,6 +18,7 @@ class CPU{
 private:
 
 
+    vector <string> screen;
     string IR ;
     string  PC ;
     Register registers;

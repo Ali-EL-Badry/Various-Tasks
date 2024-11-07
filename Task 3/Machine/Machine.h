@@ -22,7 +22,7 @@ private:
 public:
 
     // show options to clear
-    void clear(string option );// 1. if to clear registers (of course will be the cpu too),2. clean memo ,3. clean all
+    void clear(/*string option */);// 1. if to clear registers (of course will be the cpu too),2. clean memo ,3. clean all
 
 //0 -> all , 1 -> step by step
     bool load_file(string name, string place);//add c000 if not found in the end of the file

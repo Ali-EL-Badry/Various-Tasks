@@ -14,6 +14,7 @@ class Register{
 private:
     vector<string> rgstr;
 public:
+    Register():rgstr(16){};
     void set_rgstr(int location,string &value);
     void clear();
     string& get_rgstr(int location);

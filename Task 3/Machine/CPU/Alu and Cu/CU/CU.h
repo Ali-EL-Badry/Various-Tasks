@@ -80,7 +80,7 @@ public:
      * @param reg The register where the content will be stored to the screen.
      * @param addressRegister The address of the register containing the address of the memory location.
      */
-    static void storeScreen(Register &reg , const char &addressRegister);
+    static void storeScreen(Register &reg , const char &addressRegister,vector<string>&screen);
     
     /**
      * @brief  Move the bits of the register R to register S.

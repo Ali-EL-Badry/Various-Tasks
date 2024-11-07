@@ -45,7 +45,11 @@ bool UI::display_main_menu(bool first,Machine& machine) { // if to end or to con
 
     if(choice=="1"){
 
-        display_clear_menu(machine);
+       // display_clear_menu(machine);
+        machine.clear(/*choice*/);
+        cout<<"Done! The machine is cleared  \n\n";
+        //test
+        //machine.show_machine();
 
     }else if(choice=="2"){
 
@@ -56,11 +60,11 @@ bool UI::display_main_menu(bool first,Machine& machine) { // if to end or to con
         cout<<"\n\nThanks for using our program :)\n\n";
         return false;
     }
-
+   // machine.clear("3");
     return true;
 }
 
-void UI ::display_clear_menu(Machine& machine) {
+/*void UI ::display_clear_menu(Machine& machine) {
     string choice;
     cout<<"So Please Choose from the following list :\n\n"
         <<"1.Clear Memory\n2.Clear CPU\n3.Clear both\n\n"
@@ -81,21 +85,10 @@ void UI ::display_clear_menu(Machine& machine) {
     cout<<"Done! , take a look ! \n\n";
     machine.show_machine();
 
-}
+}*/
 
 void UI:: display_LoadInstruction_menu(Machine &machine){
 
-   /* cout<<"Choose the method to input the instructions : \n\n";
-    cout<<"1.Take from file\n2.Input by yourself\n";
-
-    string choice ;cin>>choice;
-    cin.ignore();
-
-    while (choice!="1"&&choice!="2"){
-        cout<<"Choose a valid choice : ";
-        cin>>choice;
-        cin.ignore();
-    }*/
     cout<<"Which option you want to place with in the memory ?\n\n 1.Default value (10)\n2.Choose a certain place \n\n";
     cout<<"Enter your choice : ";
 
@@ -115,7 +108,7 @@ void UI:: display_LoadInstruction_menu(Machine &machine){
         cin >> place;
         cin.ignore();
 
-        while (place == "00" && place.size() != 2 && !regex_match(place, regex(".[0-9A-F]"))) {
+        while ((place == "00" ||( place.size() != 2 || !regex_match(place, regex("[0-9A-F]{2}") ) )) ) {
             cout << "Enter a valid place in memory : ";
             cin >> place;
             cin.ignore();
@@ -133,7 +126,7 @@ void UI:: display_LoadInstruction_menu(Machine &machine){
          getline(cin,name);
          cin.ignore();
          name= validation(name);
-
+//cout<<"\n#\n";
          bool isvalid = machine.load_file(name,place);
          if(!isvalid){
              goto repeat;

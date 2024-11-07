@@ -15,7 +15,7 @@ class Memory{
 private:
     vector<vector<string>> nstrctions;
 public:
-    /*Memory():nstrctions(16, vector<string>(16,"00")){}*/
+    Memory():nstrctions(16, vector<string>(16)){}
     void set_nstrctions(int row,int coloumn ,string &value);
     void clear();
     string& get_index(int row,int coloumn);

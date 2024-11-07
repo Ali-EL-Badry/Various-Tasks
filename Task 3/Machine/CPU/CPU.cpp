@@ -6,6 +6,8 @@ void CPU::clear() {
     IR.clear();
     PC.clear();
     registers.clear();//clean registers
+    screen.clear();
+   // registers.clear();
 }
 
 
@@ -69,8 +71,9 @@ bool CPU ::valid(std::string ir) {
 
     if(ir[0]=='1'||ir[0]=='2'||ir[0]=='3'||ir[0]=='B'||ir[0]=='5'||ir[0]=='6'||ir[0]=='D'||ir[0]=='9'||ir[0]=='8'||ir[0]=='7'){
 
-        part=ir[1]+ir[2]+ir[3];
-        if(!regex_match( part, regex(".[0-9A-F]") ) ){
+      //  part=ir[1]+ir[2]+ir[3];
+      part=ir.substr(1,3);
+        if(!regex_match( part, regex("[0-9A-F]{3}") ) ){
             return false;
         }
 
@@ -83,16 +86,19 @@ bool CPU ::valid(std::string ir) {
 
         if(ir[1]!='0')
             return false;
-        part=ir[2]+ir[3];
-        if(!regex_match( part, regex(".[0-9A-F]") ) ){
+        part=ir.substr(2,3);
+        if(!regex_match( part, regex("[0-9A-F]{3}") ) ){
             return false;
         }
 
     }else if(ir[0]=='A'){
         if(ir[2]!='0')
             return false;
-        part=ir[1]+ir[3];
-        if(!regex_match( part, regex(".[0-9A-F]") ) ){
+        //part=ir[1]+ir[3];
+        string part1;string part2;
+        part1=ir[1]; part2=ir[3];
+        part=part1+part2;
+        if(!regex_match( part, regex("[0-9A-F]{3}") ) ){
             return false;
         }
 
@@ -150,7 +156,11 @@ bool CPU::excute(int& row,int& column,int Case, Memory &memo) {
     if(Case==1){
         //cu
 
-        s=translation[1]+translation[2];
+        //
+        string part1,part2;
+        part1=translation[1];part2=translation[2];
+        s=part1+part2;
+        string part3; part3=translation[0];
 
         if(IR[0]=='1'){
 
@@ -162,8 +172,8 @@ bool CPU::excute(int& row,int& column,int Case, Memory &memo) {
 
         }else if(IR[0]=='3'){
 
-            if(translation[1]==0&&translation[2]==0)
-               CU:: storeScreen(registers, translation[0]);
+            if(translation[1]=='0'&&translation[2]=='0')
+               CU:: storeScreen(registers, translation[0],screen);
             else
                 CU:: storeLocation(memo, registers, translation[0],s);
 
@@ -171,18 +181,21 @@ bool CPU::excute(int& row,int& column,int Case, Memory &memo) {
             CU:: moveBits(registers, translation[1], translation[2]);
         }else if(IR[0]=='B'){
 
-             s=translation[0]+translation[1]+translation[2];
+           s=part3+part1+part2;
            CU:: jumpToEqualLocation(registers , s, PC ,row,column);
 
         }else{
-            s=translation[0]+translation[1]+translation[2];
+
+            s=part3+part1+part2;
             CU::jumpToSmallerLocation(registers,s,PC,row,column);
         }
 
     }
     else{
+   string part3,part1,part2;part3=translation[0];
+        part1=translation[1];part2=translation[2];
 
-        s=translation[0]+translation[1]+translation[2];
+        s=part3+part1+part2;
         if(IR[0]=='5'){
            Alu:: addTwosComplement(registers, s);
         }else if(IR[0]=='6'){
@@ -215,6 +228,7 @@ string  CPU:: getter_IR(){
 
 //done
 void CPU ::show_cpu() {
+
     cout << "The PC : ";
     if(!PC.empty()){ cout<<PC<<'\n'; }
     else{cout<<"00\n";}
@@ -224,7 +238,18 @@ void CPU ::show_cpu() {
     else{cout<<"00\n";}
     cout<<"\n\n";
 
+    cout<<"The Screen looks like  : ";
+    if(!screen.empty()) {
+        for (int i = 0; i < screen.size(); ++i) {
+            cout << screen[i] << "   ";
+        }
+    }else{
+        cout<<"Nothing in the screen ";
+    }
+    cout<<"\n\n\n";
+
     cout<<"The Registers looks like : \n\n";
     registers.print_rgstr();
     cout<<"\n\n\n";
+
 }

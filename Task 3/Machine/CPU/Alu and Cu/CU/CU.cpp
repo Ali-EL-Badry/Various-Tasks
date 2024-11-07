@@ -72,7 +72,8 @@ void CU::storeScreen(Register& reg, const char& addressRegister,vector<string>&s
     int regAddress = hexToDec(addressRegister);
     string bitPattern = reg.get_rgstr(regAddress);
 
-    screen.push_back(bitPattern.empty() ? "This Register is empty." : bitPattern);
+    screen.push_back(bitPattern.empty() ? "00" : bitPattern);
+
 }
 
 void CU::moveBits(Register& reg, const char& firstRegisterAddress, const char& secondRegisterAddress){

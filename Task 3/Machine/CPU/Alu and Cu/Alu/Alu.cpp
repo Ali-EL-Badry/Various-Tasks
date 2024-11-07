@@ -78,9 +78,9 @@ double Alu::binToFloat(const string& binaryNumber){
     int exponentValue = binToDec(exponent) - 3;
     double mantissaValue = 1.0;
 
-    for (size_t i = 0; i < mantissa.size(); ++i){
+    for (int i = 0; i < mantissa.size(); ++i){
         if (mantissa[i] == '1')
-            mantissaValue += pow(2, -(i + 1));
+            mantissaValue += pow(2, - (i + 1));
     }
 
     double value = mantissaValue * pow(-1,sign) * pow(2, exponentValue);
@@ -157,6 +157,8 @@ void Alu::addTwosComplement(Register& reg, const string& index){
     int _valueRegister3_ = twosComplementToDec(_register3Value_);
 
     string result = decToHex(_valueRegister2_ + _valueRegister3_);
+    if(result.size() != 2)
+        result = '0' + result;
     reg.set_rgstr(register1, result);
 }
 
@@ -174,6 +176,8 @@ void Alu::addFloatingPoint(Register& reg, const string& index){
     double sum = _valueRegister2_ + _valueRegister3_;
 
     string result = decToHex(binToDec(floatToBin(sum))) ;
+    if(result.size() != 2)
+        result = '0' + result;
     reg.set_rgstr(register1, result);
 }
 
@@ -195,6 +199,9 @@ void Alu::bitwiseOrRegisters(Register& reg, const string& index){
         _valueRegister3_ = _valueRegister3_ * 16 + hexToDec(ch);
 
     string result = decToHex(_valueRegister2_ | _valueRegister3_);
+
+    if(result.size() != 2)
+        result = '0' + result;
     reg.set_rgstr(register1, result);
 }
 
@@ -215,6 +222,8 @@ void Alu::bitwiseAndRegisters(Register& reg, const string& index){
         _valueRegister3_ = _valueRegister3_ * 16 + hexToDec(ch);
 
     string result = decToHex(_valueRegister2_ & _valueRegister3_);
+    if(result.size() != 2)
+        result = '0' + result;
     reg.set_rgstr(register1, result);
 }
 
@@ -234,7 +243,9 @@ void Alu::bitwiseXorRegisters(Register& reg, const string& index){
     for (char ch : _register3Value_)
         _valueRegister3_ = _valueRegister3_ * 16 + hexToDec(ch);
 
-    string result = decToHex(_valueRegister2_ & _valueRegister3_);
+    string result = decToHex(_valueRegister2_ ^ _valueRegister3_);
+    if(result.size() != 2)
+        result = '0' + result;
     reg.set_rgstr(register1, result);
 
 }

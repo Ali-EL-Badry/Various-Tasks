@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ codes/OOP$ Train/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target OOP_Train
 
@@ -49,44 +49,50 @@ cmake_ninja_workdir = C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ c
 
 build cmake_object_order_depends_target_OOP_Train: phony || CMakeFiles/OOP_Train.dir
 
-build CMakeFiles/OOP_Train.dir/main.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ codes/OOP$ Train/main.cpp || cmake_object_order_depends_target_OOP_Train
+build CMakeFiles/OOP_Train.dir/main.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/main.cpp || cmake_object_order_depends_target_OOP_Train
   DEP_FILE = CMakeFiles\OOP_Train.dir\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\OOP_Train.dir
   OBJECT_FILE_DIR = CMakeFiles\OOP_Train.dir
 
-build CMakeFiles/OOP_Train.dir/Machine/CPU/Alu_and_Cu/Alu/Alu.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ codes/OOP$ Train/Machine/CPU/Alu$ and$ Cu/Alu/Alu.cpp || cmake_object_order_depends_target_OOP_Train
+build CMakeFiles/OOP_Train.dir/Machine/CPU/Alu_and_Cu/Alu/Alu.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/Machine/CPU/Alu$ and$ Cu/Alu/Alu.cpp || cmake_object_order_depends_target_OOP_Train
   DEP_FILE = CMakeFiles\OOP_Train.dir\Machine\CPU\Alu_and_Cu\Alu\Alu.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\OOP_Train.dir
   OBJECT_FILE_DIR = CMakeFiles\OOP_Train.dir\Machine\CPU\Alu_and_Cu\Alu
 
-build CMakeFiles/OOP_Train.dir/Machine/CPU/Alu_and_Cu/CU/CU.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ codes/OOP$ Train/Machine/CPU/Alu$ and$ Cu/CU/CU.cpp || cmake_object_order_depends_target_OOP_Train
+build CMakeFiles/OOP_Train.dir/Machine/CPU/Alu_and_Cu/CU/CU.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/Machine/CPU/Alu$ and$ Cu/CU/CU.cpp || cmake_object_order_depends_target_OOP_Train
   DEP_FILE = CMakeFiles\OOP_Train.dir\Machine\CPU\Alu_and_Cu\CU\CU.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\OOP_Train.dir
   OBJECT_FILE_DIR = CMakeFiles\OOP_Train.dir\Machine\CPU\Alu_and_Cu\CU
 
-build CMakeFiles/OOP_Train.dir/Machine/CPU/CPU.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ codes/OOP$ Train/Machine/CPU/CPU.cpp || cmake_object_order_depends_target_OOP_Train
+build CMakeFiles/OOP_Train.dir/Machine/CPU/CPU.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/Machine/CPU/CPU.cpp || cmake_object_order_depends_target_OOP_Train
   DEP_FILE = CMakeFiles\OOP_Train.dir\Machine\CPU\CPU.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\OOP_Train.dir
   OBJECT_FILE_DIR = CMakeFiles\OOP_Train.dir\Machine\CPU
 
-build CMakeFiles/OOP_Train.dir/Machine/CPU/Register/Register.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ codes/OOP$ Train/Machine/CPU/Register/Register.cpp || cmake_object_order_depends_target_OOP_Train
+build CMakeFiles/OOP_Train.dir/Machine/CPU/Register/Register.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/Machine/CPU/Register/Register.cpp || cmake_object_order_depends_target_OOP_Train
   DEP_FILE = CMakeFiles\OOP_Train.dir\Machine\CPU\Register\Register.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\OOP_Train.dir
   OBJECT_FILE_DIR = CMakeFiles\OOP_Train.dir\Machine\CPU\Register
 
-build CMakeFiles/OOP_Train.dir/Machine/Memory/Memory.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ codes/OOP$ Train/Machine/Memory/Memory.cpp || cmake_object_order_depends_target_OOP_Train
+build CMakeFiles/OOP_Train.dir/Machine/Memory/Memory.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/Machine/Memory/Memory.cpp || cmake_object_order_depends_target_OOP_Train
   DEP_FILE = CMakeFiles\OOP_Train.dir\Machine\Memory\Memory.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\OOP_Train.dir
   OBJECT_FILE_DIR = CMakeFiles\OOP_Train.dir\Machine\Memory
 
-build CMakeFiles/OOP_Train.dir/Machine/Machine.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ codes/OOP$ Train/Machine/Machine.cpp || cmake_object_order_depends_target_OOP_Train
+build CMakeFiles/OOP_Train.dir/Machine/Machine.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/Machine/Machine.cpp || cmake_object_order_depends_target_OOP_Train
   DEP_FILE = CMakeFiles\OOP_Train.dir\Machine\Machine.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\OOP_Train.dir
+  OBJECT_FILE_DIR = CMakeFiles\OOP_Train.dir\Machine
+
+build CMakeFiles/OOP_Train.dir/Machine/UI.cpp.obj: CXX_COMPILER__OOP_Train_unscanned_Debug C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/Machine/UI.cpp || cmake_object_order_depends_target_OOP_Train
+  DEP_FILE = CMakeFiles\OOP_Train.dir\Machine\UI.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\OOP_Train.dir
   OBJECT_FILE_DIR = CMakeFiles\OOP_Train.dir\Machine
@@ -99,7 +105,7 @@ build CMakeFiles/OOP_Train.dir/Machine/Machine.cpp.obj: CXX_COMPILER__OOP_Train_
 #############################################
 # Link the executable OOP_Train.exe
 
-build OOP_Train.exe: CXX_EXECUTABLE_LINKER__OOP_Train_Debug CMakeFiles/OOP_Train.dir/main.cpp.obj CMakeFiles/OOP_Train.dir/Machine/CPU/Alu_and_Cu/Alu/Alu.cpp.obj CMakeFiles/OOP_Train.dir/Machine/CPU/Alu_and_Cu/CU/CU.cpp.obj CMakeFiles/OOP_Train.dir/Machine/CPU/CPU.cpp.obj CMakeFiles/OOP_Train.dir/Machine/CPU/Register/Register.cpp.obj CMakeFiles/OOP_Train.dir/Machine/Memory/Memory.cpp.obj CMakeFiles/OOP_Train.dir/Machine/Machine.cpp.obj
+build OOP_Train.exe: CXX_EXECUTABLE_LINKER__OOP_Train_Debug CMakeFiles/OOP_Train.dir/main.cpp.obj CMakeFiles/OOP_Train.dir/Machine/CPU/Alu_and_Cu/Alu/Alu.cpp.obj CMakeFiles/OOP_Train.dir/Machine/CPU/Alu_and_Cu/CU/CU.cpp.obj CMakeFiles/OOP_Train.dir/Machine/CPU/CPU.cpp.obj CMakeFiles/OOP_Train.dir/Machine/CPU/Register/Register.cpp.obj CMakeFiles/OOP_Train.dir/Machine/Memory/Memory.cpp.obj CMakeFiles/OOP_Train.dir/Machine/Machine.cpp.obj CMakeFiles/OOP_Train.dir/Machine/UI.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\OOP_Train.dir
@@ -114,7 +120,7 @@ build OOP_Train.exe: CXX_EXECUTABLE_LINKER__OOP_Train_Debug CMakeFiles/OOP_Train
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "C:\Users\HP\OneDrive\Desktop\My_code\programs_code\C++ codes\OOP Train\cmake-build-debug" && "C:\Users\HP\AppData\Local\JetBrains\CLion 2024.1.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "C:\Users\HP\OneDrive\Desktop\My_code\Various-Tasks\Task 3\cmake-build-debug" && "C:\Users\HP\AppData\Local\JetBrains\CLion 2024.1.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -125,7 +131,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "C:\Users\HP\OneDrive\Desktop\My_code\programs_code\C++ codes\OOP Train\cmake-build-debug" && "C:\Users\HP\AppData\Local\JetBrains\CLion 2024.1.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\HP\OneDrive\Desktop\My_code\programs_code\C++ codes\OOP Train" -B"C:\Users\HP\OneDrive\Desktop\My_code\programs_code\C++ codes\OOP Train\cmake-build-debug""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "C:\Users\HP\OneDrive\Desktop\My_code\Various-Tasks\Task 3\cmake-build-debug" && "C:\Users\HP\AppData\Local\JetBrains\CLion 2024.1.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\HP\OneDrive\Desktop\My_code\Various-Tasks\Task 3" -B"C:\Users\HP\OneDrive\Desktop\My_code\Various-Tasks\Task 3\cmake-build-debug""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -143,7 +149,7 @@ build OOP_Train: phony OOP_Train.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++ codes/OOP Train/cmake-build-debug
+# Folder: C:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task 3/cmake-build-debug
 
 build all: phony OOP_Train.exe
 
@@ -154,14 +160,14 @@ build all: phony OOP_Train.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCXXInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeGenericSystem.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeRCInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU-C.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU-CXX.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-C.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-Initialize.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-windres.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ codes/OOP$ Train/CMakeLists.txt CMakeCache.txt CMakeFiles/3.28.1/CMakeCCompiler.cmake CMakeFiles/3.28.1/CMakeCXXCompiler.cmake CMakeFiles/3.28.1/CMakeRCCompiler.cmake CMakeFiles/3.28.1/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCXXInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeGenericSystem.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeRCInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU-C.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU-CXX.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-C.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-Initialize.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-windres.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/CMakeLists.txt CMakeCache.txt CMakeFiles/3.28.1/CMakeCCompiler.cmake CMakeFiles/3.28.1/CMakeCXXCompiler.cmake CMakeFiles/3.28.1/CMakeRCCompiler.cmake CMakeFiles/3.28.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCXXInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeGenericSystem.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeRCInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU-C.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU-CXX.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-C.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-Initialize.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-windres.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake C$:/Users/HP/OneDrive/Desktop/My_code/programs_code/C++$ codes/OOP$ Train/CMakeLists.txt CMakeCache.txt CMakeFiles/3.28.1/CMakeCCompiler.cmake CMakeFiles/3.28.1/CMakeCXXCompiler.cmake CMakeFiles/3.28.1/CMakeRCCompiler.cmake CMakeFiles/3.28.1/CMakeSystem.cmake: phony
+build C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCXXInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeGenericSystem.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeRCInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU-C.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU-CXX.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Compiler/GNU.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-C.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-GNU.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-Initialize.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows-windres.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/Windows.cmake C$:/Users/HP/AppData/Local/JetBrains/CLion$ 2024.1.2/bin/cmake/win/x64/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake C$:/Users/HP/OneDrive/Desktop/My_code/Various-Tasks/Task$ 3/CMakeLists.txt CMakeCache.txt CMakeFiles/3.28.1/CMakeCCompiler.cmake CMakeFiles/3.28.1/CMakeCXXCompiler.cmake CMakeFiles/3.28.1/CMakeRCCompiler.cmake CMakeFiles/3.28.1/CMakeSystem.cmake: phony
 
 
 #############################################

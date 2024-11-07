@@ -17,4 +17,5 @@ add_executable(OOP_Train main.cpp
         Machine/Memory/Memory.cpp
         Machine/Machine.h
         Machine/Machine.cpp
+        Machine/UI.cpp
 )

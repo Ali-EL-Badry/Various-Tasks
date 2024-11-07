@@ -54,12 +54,6 @@ bool CPU ::fetch(int& row,int& column,const vector<vector<string>>&memo) {
 
     IR=ir;
     return true;
-
-
-
-
-
-
 }
 
 //done
@@ -86,8 +80,8 @@ bool CPU ::valid(std::string ir) {
 
         if(ir[1]!='0')
             return false;
-        part=ir.substr(2,3);
-        if(!regex_match( part, regex("[0-9A-F]{3}") ) ){
+        part=ir.substr(2);
+        if(!regex_match( part, regex("[0-9A-F]{2}") ) ){
             return false;
         }
 
@@ -98,7 +92,7 @@ bool CPU ::valid(std::string ir) {
         string part1;string part2;
         part1=ir[1]; part2=ir[3];
         part=part1+part2;
-        if(!regex_match( part, regex("[0-9A-F]{3}") ) ){
+        if(!regex_match( part, regex("[0-9A-F]{2}") ) ){
             return false;
         }
 
@@ -134,8 +128,9 @@ int CPU  ::decode(bool option) {
     }
     else if( IR[0]=='5'||IR[0]=='6'||IR[0]=='7'||IR[0]=='8'||IR[0]=='9'||IR[0]=='A'){
         return 2;
-    }else if(IR=="C000"){
-        return 3;
+    }else {
+        int returnValue = 3;
+        return returnValue;
     }
 
 
@@ -172,7 +167,7 @@ bool CPU::excute(int& row,int& column,int Case, Memory &memo) {
 
         }else if(IR[0]=='3'){
 
-            if(translation[1]=='0'&&translation[2]=='0')
+            if(translation[1]=='0' && translation[2]=='0')
                CU:: storeScreen(registers, translation[0],screen);
             else
                 CU:: storeLocation(memo, registers, translation[0],s);

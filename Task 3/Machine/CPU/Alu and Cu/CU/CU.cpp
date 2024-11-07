@@ -72,7 +72,7 @@ void CU::storeScreen(Register& reg, const char& addressRegister,vector<string>&s
     int regAddress = hexToDec(addressRegister);
     string bitPattern = reg.get_rgstr(regAddress);
 
-    cout << (bitPattern.empty() ? "This Register is empty." : bitPattern) << "\n";
+    screen.push_back(bitPattern.empty() ? "This Register is empty." : bitPattern);
 }
 
 void CU::moveBits(Register& reg, const char& firstRegisterAddress, const char& secondRegisterAddress){
@@ -95,8 +95,7 @@ void CU::jumpToEqualLocation(Register& reg, const string& Address, string& curre
     if(registerContent == reg.get_rgstr(0)){
         string newMemoryAddress = Address.substr(1,2);
 
-        currentPC = newMemoryAddress;
-        row = memoryRow; column = memoryColumn;
+        row = memoryRow; column = memoryColumn-1;
     }
 }
 
@@ -114,8 +113,7 @@ void CU::jumpToSmallerLocation(Register& reg, const string& Address, string& cur
     if(_1stRegisterValue_ > _2ndRegisterValue_){
         string newMemoryAddress = Address.substr(1,2);
 
-        currentPC = newMemoryAddress;
-        row = memoryRow; column = memoryColumn;
+        row = memoryRow; column = memoryColumn-1;
     }
 }
 
